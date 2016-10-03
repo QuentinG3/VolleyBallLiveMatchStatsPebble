@@ -5,7 +5,6 @@
 #define NUM_COMPLEX 2
 #define NUM_MAX_SET 5
 
-
 int currentSetterPositionIndex;
 char* setterPositionNames[NUM_SETTER_POSITION];
 
@@ -32,4 +31,4 @@ int next_complex();
 int gotoNextSet();
 void undoLastAction();
 int matchOver();
-void sendStats();
+//void sendStats();

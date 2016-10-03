@@ -2,7 +2,7 @@
 #include "statByComplexWindow.h"
 #include "windows.h"
 #include "data.h"
-
+#include "gameWindow.h"
 static TextLayer *s_C1_up_layer;
 static TextLayer *s_C2_up_layer;
 
@@ -336,17 +336,370 @@ void computeAndDisplayC2S2(){
   text_layer_set_text(s_C2_S2_percentage_layer, s_C2_S2_percentage_text_buffer);
 }
 
+void computeAndDisplayC1Setter(){
+  //Computing percentage
+  double numerator = (double)dataVariable[currentSetIndex][3][0][0] + (double)dataVariable[currentSetIndex][2][0][0] + (double)dataVariable[currentSetIndex][1][0][0];
+  double denominator = numerator + (double)dataVariable[currentSetIndex][3][0][1] + (double)dataVariable[currentSetIndex][2][0][1] + (double)dataVariable[currentSetIndex][1][0][1];
+    
+  double percentage;
+  if(denominator == 0){
+    percentage = 0;
+  }
+  else{
+    percentage = (numerator / denominator)*100;
+  }
+  if(percentage < 60){
+    text_layer_set_text_color(s_C1_S1_percentage_layer, GColorRed);
+  }
+  else{
+    text_layer_set_text_color(s_C1_S1_percentage_layer, GColorBlack);
+  }
+  
+  //Displaying percentage
+  snprintf(s_C1_S1_percentage_text_buffer, 30,"%d",(int)percentage);
+  strcat(s_C1_S1_percentage_text_buffer,"%");
+  text_layer_set_text(s_C1_S1_percentage_layer, s_C1_S1_percentage_text_buffer);
+  
+}
+void computeAndDisplayC1R2(){
+  //Computing percentage
+  double numerator = (double)dataVariable[currentSetIndex][3][0][0] + (double)dataVariable[currentSetIndex][2][0][0] + (double)dataVariable[currentSetIndex][1][0][0];
+  double denominator = numerator + (double)dataVariable[currentSetIndex][3][0][1] + (double)dataVariable[currentSetIndex][2][0][1] + (double)dataVariable[currentSetIndex][1][0][1];
+  
+  double percentage;
+  if(denominator == 0){
+    percentage = 0;
+  }
+  else{
+    percentage = (numerator / denominator)*100;
+  }
+  if(percentage < 60){
+    text_layer_set_text_color(s_C1_S3_percentage_layer, GColorRed);
+  }
+  else{
+    text_layer_set_text_color(s_C1_S3_percentage_layer, GColorBlack);
+  }
+  
+  //Displaying percentage
+  snprintf(s_C1_S3_percentage_text_buffer, 30,"%d",(int)percentage);
+  strcat(s_C1_S3_percentage_text_buffer,"%");
+  text_layer_set_text(s_C1_S3_percentage_layer, s_C1_S3_percentage_text_buffer);
+}
+void computeAndDisplayC1R5(){
+  //Computing percentage
+  double numerator = (double)dataVariable[currentSetIndex][5][0][0] + (double)dataVariable[currentSetIndex][4][0][0] + (double)dataVariable[currentSetIndex][2][0][0];
+  double denominator = numerator + (double)dataVariable[currentSetIndex][5][0][1] + (double)dataVariable[currentSetIndex][4][0][1] + (double)dataVariable[currentSetIndex][3][0][1];
+  
+  double percentage;
+  if(denominator == 0){
+    percentage = 0;
+  }
+  else{
+    percentage = (numerator / denominator)*100;
+  }
+  if(percentage < 60){
+    text_layer_set_text_color(s_C1_S2_percentage_layer, GColorRed);
+  }
+  else{
+    text_layer_set_text_color(s_C1_S2_percentage_layer, GColorBlack);
+  }
+  
+  //Displaying percentage
+  snprintf(s_C1_S2_percentage_text_buffer, 30,"%d",(int)percentage);
+  strcat(s_C1_S2_percentage_text_buffer,"%");
+  text_layer_set_text(s_C1_S2_percentage_layer, s_C1_S2_percentage_text_buffer);
+}
+void computeAndDisplayC1opposite(){
+  //Computing percentage
+  double numerator = (double)dataVariable[currentSetIndex][0][0][0] + (double)dataVariable[currentSetIndex][5][0][0] + (double)dataVariable[currentSetIndex][4][0][0];
+  double denominator = numerator + (double)dataVariable[currentSetIndex][0][0][1] + (double)dataVariable[currentSetIndex][5][0][1] + (double)dataVariable[currentSetIndex][4][0][1];
+  
+  double percentage;
+  if(denominator == 0){
+    percentage = 0;
+  }
+  else{
+    percentage = (numerator / denominator)*100;
+  }
+  if(percentage < 60){
+    text_layer_set_text_color(s_C1_S4_percentage_layer, GColorRed);
+  }
+  else{
+    text_layer_set_text_color(s_C1_S4_percentage_layer, GColorBlack);
+  }
+  
+  //Displaying percentage
+  snprintf(s_C1_S4_percentage_text_buffer, 30,"%d",(int)percentage);
+  strcat(s_C1_S4_percentage_text_buffer,"%");
+  text_layer_set_text(s_C1_S4_percentage_layer, s_C1_S4_percentage_text_buffer);
+}
+void computeAndDisplayC1M3(){
+  //Computing percentage
+  double numerator = (double)dataVariable[currentSetIndex][1][0][0] + (double)dataVariable[currentSetIndex][0][0][0] + (double)dataVariable[currentSetIndex][5][0][0];
+  double denominator = numerator + (double)dataVariable[currentSetIndex][1][0][1] + (double)dataVariable[currentSetIndex][0][0][1] + (double)dataVariable[currentSetIndex][5][0][1];
+  
+  double percentage;
+  if(denominator == 0){
+    percentage = 0;
+  }
+  else{
+    percentage = (numerator / denominator)*100;
+  }
+  if(percentage < 60){
+    text_layer_set_text_color(s_C1_S6_percentage_layer, GColorRed);
+  }
+  else{
+    text_layer_set_text_color(s_C1_S6_percentage_layer, GColorBlack);
+  }
+  
+  //Displaying percentage
+  snprintf(s_C1_S6_percentage_text_buffer, 30,"%d",(int)percentage);
+  strcat(s_C1_S6_percentage_text_buffer,"%");
+  text_layer_set_text(s_C1_S6_percentage_layer, s_C1_S6_percentage_text_buffer);
+}
+void computeAndDisplayC1M6(){
+  //Computing percentage
+  double numerator = (double)dataVariable[currentSetIndex][4][0][0] + (double)dataVariable[currentSetIndex][3][0][0] + (double)dataVariable[currentSetIndex][2][0][0];
+  double denominator = numerator + (double)dataVariable[currentSetIndex][4][0][1] + (double)dataVariable[currentSetIndex][3][0][1] + (double)dataVariable[currentSetIndex][2][0][1];
+  
+  double percentage;
+  if(denominator == 0){
+    percentage = 0;
+  }
+  else{
+    percentage = (numerator / denominator)*100;
+  }
+  if(percentage < 60){
+    text_layer_set_text_color(s_C1_S5_percentage_layer, GColorRed);
+  }
+  else{
+    text_layer_set_text_color(s_C1_S5_percentage_layer, GColorBlack);
+  }
+  
+  //Displaying percentage
+  snprintf(s_C1_S5_percentage_text_buffer, 30,"%d",(int)percentage);
+  strcat(s_C1_S5_percentage_text_buffer,"%");
+  text_layer_set_text(s_C1_S5_percentage_layer, s_C1_S5_percentage_text_buffer);
+}
 
-static void stat_by_complex_short_down_click_handler(ClickRecognizerRef recognizer, void *context) {
-  window_stack_push(g_stat_by_player_window, true);
+
+void computeAndDisplayC2Setter(){
+  //Computing percentage
+  double numerator = (double)dataVariable[currentSetIndex][3][1][0] + (double)dataVariable[currentSetIndex][2][1][0] + (double)dataVariable[currentSetIndex][1][1][0];
+  double denominator = numerator + (double)dataVariable[currentSetIndex][3][1][1] + (double)dataVariable[currentSetIndex][2][1][1] + (double)dataVariable[currentSetIndex][1][1][1];
+  
+  double percentage;
+  if(denominator == 0){
+    percentage = 0;
+  }
+  else{
+    percentage = (numerator / denominator)*100;
+  }
+  if(percentage < 40){
+    text_layer_set_text_color(s_C2_S1_percentage_layer, GColorRed);
+  }
+  else{
+    text_layer_set_text_color(s_C2_S1_percentage_layer, GColorBlack);
+  }
+  
+  //Displaying percentage
+  snprintf(s_C2_S1_percentage_text_buffer, 30,"%d",(int)percentage);
+  strcat(s_C2_S1_percentage_text_buffer,"%");
+  text_layer_set_text(s_C2_S1_percentage_layer, s_C2_S1_percentage_text_buffer);
+}
+void computeAndDisplayC2R2(){
+  //Computing percentage
+  double numerator = (double)dataVariable[currentSetIndex][2][1][0] + (double)dataVariable[currentSetIndex][1][1][0] + (double)dataVariable[currentSetIndex][0][1][0];
+  double denominator = numerator + (double)dataVariable[currentSetIndex][2][1][1] + (double)dataVariable[currentSetIndex][1][1][1] + (double)dataVariable[currentSetIndex][0][1][1];
+  
+  double percentage;
+  if(denominator == 0){
+    percentage = 0;
+  }
+  else{
+    percentage = (numerator / denominator)*100;
+  }
+  if(percentage < 40){
+    text_layer_set_text_color(s_C2_S3_percentage_layer, GColorRed);
+  }
+  else{
+    text_layer_set_text_color(s_C2_S3_percentage_layer, GColorBlack);
+  }
+  
+  //Displaying percentage
+  snprintf(s_C2_S3_percentage_text_buffer, 30,"%d",(int)percentage);
+  strcat(s_C2_S3_percentage_text_buffer,"%");
+  text_layer_set_text(s_C2_S3_percentage_layer, s_C2_S3_percentage_text_buffer);
+}
+void computeAndDisplayC2R5(){
+  //Computing percentage
+  double numerator = (double)dataVariable[currentSetIndex][5][1][0] + (double)dataVariable[currentSetIndex][4][1][0] + (double)dataVariable[currentSetIndex][3][1][0];
+  double denominator = numerator + (double)dataVariable[currentSetIndex][5][1][1] + (double)dataVariable[currentSetIndex][4][1][1] + (double)dataVariable[currentSetIndex][3][1][1];
+  
+  double percentage;
+  if(denominator == 0){
+    percentage = 0;
+  }
+  else{
+    percentage = (numerator / denominator)*100;
+  }
+  if(percentage < 40){
+    text_layer_set_text_color(s_C2_S2_percentage_layer, GColorRed);
+  }
+  else{
+    text_layer_set_text_color(s_C2_S2_percentage_layer, GColorBlack);
+  }
+  
+  //Displaying percentage
+  snprintf(s_C2_S2_percentage_text_buffer, 30,"%d",(int)percentage);
+  strcat(s_C2_S2_percentage_text_buffer,"%");
+  text_layer_set_text(s_C2_S2_percentage_layer, s_C2_S2_percentage_text_buffer);
+}
+void computeAndDisplayC2opposite(){
+  //Computing percentage
+  double numerator = (double)dataVariable[currentSetIndex][0][1][0] + (double)dataVariable[currentSetIndex][5][1][0] + (double)dataVariable[currentSetIndex][4][1][0];
+  double denominator = numerator + (double)dataVariable[currentSetIndex][0][1][1] + (double)dataVariable[currentSetIndex][5][1][1] + (double)dataVariable[currentSetIndex][4][1][1];
+  
+  double percentage;
+  if(denominator == 0){
+    percentage = 0;
+  }
+  else{
+    percentage = (numerator / denominator)*100;
+  }
+  if(percentage < 40){
+    text_layer_set_text_color(s_C2_S4_percentage_layer, GColorRed);
+  }
+  else{
+    text_layer_set_text_color(s_C2_S4_percentage_layer, GColorBlack);
+  }
+  
+  //Displaying percentage
+  snprintf(s_C2_S4_percentage_text_buffer, 30,"%d",(int)percentage);
+  strcat(s_C2_S4_percentage_text_buffer,"%");
+  text_layer_set_text(s_C2_S4_percentage_layer, s_C2_S4_percentage_text_buffer);
+}
+void computeAndDisplayC2M3(){
+  //Computing percentage
+  double numerator = (double)dataVariable[currentSetIndex][1][1][0] + (double)dataVariable[currentSetIndex][0][1][0] + (double)dataVariable[currentSetIndex][5][1][0];
+  double denominator = numerator + (double)dataVariable[currentSetIndex][1][1][1] + (double)dataVariable[currentSetIndex][0][1][1] + (double)dataVariable[currentSetIndex][5][1][1];
+  
+  double percentage;
+  if(denominator == 0){
+    percentage = 0;
+  }
+  else{
+    percentage = (numerator / denominator)*100;
+  }
+  if(percentage < 40){
+    text_layer_set_text_color(s_C2_S6_percentage_layer, GColorRed);
+  }
+  else{
+    text_layer_set_text_color(s_C2_S6_percentage_layer, GColorBlack);
+  }
+  
+  //Displaying percentage
+  snprintf(s_C2_S6_percentage_text_buffer, 30,"%d",(int)percentage);
+  strcat(s_C2_S6_percentage_text_buffer,"%");
+  text_layer_set_text(s_C2_S6_percentage_layer, s_C2_S6_percentage_text_buffer);
+}
+void computeAndDisplayC2M6(){
+  //Computing percentage
+  double numerator = (double)dataVariable[currentSetIndex][4][1][0] + (double)dataVariable[currentSetIndex][3][1][0] + (double)dataVariable[currentSetIndex][2][1][0];
+  double denominator = numerator + (double)dataVariable[currentSetIndex][4][1][1] + (double)dataVariable[currentSetIndex][3][1][1] + (double)dataVariable[currentSetIndex][2][1][1];
+  double percentage;
+  if(denominator == 0){
+    percentage = 0;
+  }
+  else{
+    percentage = (numerator / denominator)*100;
+  }
+  
+  if(percentage < 40){
+    text_layer_set_text_color(s_C2_S5_percentage_layer, GColorRed);
+  }
+  else{
+    text_layer_set_text_color(s_C2_S5_percentage_layer, GColorBlack);
+  }
+  //Displaying percentage
+  snprintf(s_C2_S5_percentage_text_buffer, 30,"%d",(int)percentage);
+  strcat(s_C2_S5_percentage_text_buffer,"%");
+  text_layer_set_text(s_C2_S5_percentage_layer, s_C2_S5_percentage_text_buffer);
+}
+
+void display_static_text_player(){
+  text_layer_set_text(s_S1_layer, "Set");
+  text_layer_set_text(s_S6_layer, "M3");
+  text_layer_set_text(s_S5_layer, "M6");
+  text_layer_set_text(s_S4_layer, "Opp");
+  text_layer_set_text(s_S3_layer, "R2");
+  text_layer_set_text(s_S2_layer, "R5");
+  
+}
+void display_static_text_complex(){
+  text_layer_set_text(s_S1_layer, "S1");
+  text_layer_set_text(s_S6_layer, "S6");
+  text_layer_set_text(s_S5_layer, "S5");
+  text_layer_set_text(s_S4_layer, "S4");
+  text_layer_set_text(s_S3_layer, "S3");
+  text_layer_set_text(s_S2_layer, "S2");
+  
+}
+
+void display_stat_by_complex(){
+  computeAndDisplayC1S1();
+  computeAndDisplayC1S6();
+  computeAndDisplayC1S5();
+  computeAndDisplayC1S4();
+  computeAndDisplayC1S3();
+  computeAndDisplayC1S2();
+  
+  computeAndDisplayC2S1();
+  computeAndDisplayC2S6();
+  computeAndDisplayC2S5();
+  computeAndDisplayC2S4();
+  computeAndDisplayC2S3();
+  computeAndDisplayC2S2();
+  
+  display_static_text_complex();
+  
+}
+
+void display_stat_by_player(){
+  computeAndDisplayC1Setter();
+  computeAndDisplayC1R2();
+  computeAndDisplayC1R5();
+  computeAndDisplayC1opposite();
+  computeAndDisplayC1M3();
+  computeAndDisplayC1M6();
+  
+  computeAndDisplayC2Setter();
+  computeAndDisplayC2R2();
+  computeAndDisplayC2R5();
+  computeAndDisplayC2opposite();
+  computeAndDisplayC2M3();
+  computeAndDisplayC2M6();
+  
+  display_static_text_player();
+}
+static void stat_by_complex_short_back_click_handler(ClickRecognizerRef recognizer, void *context) {
+  initialize_game_window();
+  window_stack_push(g_game_window, true);
+  window_destroy(g_stat_by_complex_window);
+}
+
+static void stat_by_complex_short_select_click_handler(ClickRecognizerRef recognizer, void *context) {
+  display_stat_by_player();
 }
 
 
 static void stat_by_complex_window_click_config_provider(void *context) {
   
-    ButtonId idDown = BUTTON_ID_DOWN; //The down button
-  
-    window_single_click_subscribe(idDown,stat_by_complex_short_down_click_handler);
+    ButtonId idSelect = BUTTON_ID_SELECT; //The down button
+    ButtonId idBack = BUTTON_ID_BACK; //The back button
+
+    window_single_click_subscribe(idBack,stat_by_complex_short_back_click_handler); 
+    window_single_click_subscribe(idSelect,stat_by_complex_short_select_click_handler);
   
 }
 

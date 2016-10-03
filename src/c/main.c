@@ -7,8 +7,8 @@
 #include "setOverWindow.h"
 #include "matchOverWindow.h"
 #include "statByComplexWindow.h"
-#include "statByPlayerWindow.h"
 
+//Declaration of some necessary methods for communication with AppMessage(Allow us to send message to the server)
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
   //APP_LOG(APP_LOG_LEVEL_INFO, "Indox received success!");
 }
@@ -27,7 +27,6 @@ static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
 
 
 static void initAllWindows() {
-  
   app_message_register_inbox_received(inbox_received_callback);
   app_message_register_inbox_dropped(inbox_dropped_callback);
   app_message_register_outbox_failed(outbox_failed_callback);
@@ -35,24 +34,23 @@ static void initAllWindows() {
   
   //Initilizing historic stack
   initializeHistoricStack();
-  
   //Initializing setterAndComplexChoiceWindow
   initialize_setter_and_complex_choice_window();
   
-  //Initializing setterAndComplexChoiceWindow
-  initialize_game_window();
+  //Initializing game window
+  //initialize_game_window();
   
   //Initializing SetOverWindow
-  initialize_set_over_window();
+  //initialize_set_over_window();
   
   //Initializing MatchOverWindow
-  initialize_match_over_window();
+  //initialize_match_over_window();
   
   //Initializing StatByComplex
-  initialize_stat_by_complex_window();
+  //initialize_stat_by_complex_window();
   
   //Initializing StatByPlayer
-  initialize_stat_by_player_window();
+  //initialize_stat_by_player_window();
   
   // Show the Window on the watch, with animated=true
   //window_stack_push(g_game_window, true);
@@ -63,7 +61,7 @@ static void initAllWindows() {
   //window_stack_push(g_match_over_window, true);
   
     // Open AppMessage
-  app_message_open(100, 1024);
+  app_message_open(100, 1400);
 }
 
 static void deinit(void) {
@@ -71,12 +69,12 @@ static void deinit(void) {
   deinitializeHistoricStack();
 	
 	// Destroy all the windows
-	window_destroy(g_setter_and_complex_choice_window);
-  window_destroy(g_game_window);
-  window_destroy(g_set_over_window);
-  window_destroy(g_match_over_window);
-  window_destroy(g_stat_by_complex_window);
-  window_destroy(g_stat_by_player_window);
+	//window_destroy(g_setter_and_complex_choice_window);
+  //window_destroy(g_game_window);
+  //window_destroy(g_set_over_window);
+  //window_destroy(g_match_over_window);
+  //window_destroy(g_stat_by_complex_window);
+  //window_destroy(g_stat_by_player_window);
 }
 
 int main(void) {

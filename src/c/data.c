@@ -6,22 +6,21 @@
 #define NUM_SETTER_POSITION 6
 #define NUM_COMPLEX 2
 #define NUM_MAX_SET 5
-//char* emailAdresses = "Quentin.Gusbin@student.uclouvain.be";
-int currentSetterPositionIndex = 0;
-char* setterPositionNames[NUM_SETTER_POSITION] = {"Setter 1","Setter 2","Setter 3","Setter 4","Setter 5","Setter 6"};
 
-int currentComplexIndex = 0;
-char* complexNames[NUM_COMPLEX] = {"C1","C2"};
-char* serveNames[NUM_COMPLEX] = {"Opponent","Team"};
 
-int currentSetIndex = 0;
-
+  
 int dataVariable[NUM_MAX_SET][NUM_SETTER_POSITION][NUM_COMPLEX][2] = {{{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}}},
                                                                      {{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}}},
                                                                      {{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}}},
                                                                      {{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}}},
                                                                      {{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}}}};
-
+  
+int  currentSetIndex = 0;
+char*  serveNames[NUM_COMPLEX] = {"Opponent","Team"};
+char*  complexNames[NUM_COMPLEX] = {"C1","C2"};
+int  currentComplexIndex = 0;
+char*  setterPositionNames[NUM_SETTER_POSITION] = {"Setter 1","Setter 2","Setter 3","Setter 4","Setter 5","Setter 6"};
+int currentSetterPositionIndex = 0;
 
 int setWon[NUM_MAX_SET] = {-1,-1,-1,-1,-1};
 
@@ -146,24 +145,3 @@ int matchOver(){
   }
 }
 
-void sendStats(){
-  // Create dictionary
-  DictionaryIterator *iter;
-  app_message_outbox_begin(&iter);
-  int setterOrder[6] = {0,5,4,3,2,1};
-  int n = 0;
-  for(int i = 0;i<5;i++){
-    for(int j = 0;j<6;j++){
-      for(int k = 0;k<2;k++){
-        for(int l = 0;l<2;l++){
-          int setter = setterOrder[j];
-          dict_write_uint8(iter, n, dataVariable[i][setter][k][l]);
-          n++;
-        }
-      }
-    }
-  }
-  
-  // Send the message!
-  app_message_outbox_send();
-}

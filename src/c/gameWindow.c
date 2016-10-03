@@ -2,6 +2,9 @@
 #include "gameWindow.h"
 #include "windows.h"
 #include "data.h"
+#include "setterAndComplexChoiceWindow.h"
+#include "setOverWindow.h"
+#include "statByComplexWindow.h"
 
 #define NUM_SETTER_POSITION 6
 #define NUM_COMPLEX 2
@@ -158,7 +161,9 @@ void updateUI(){
 }
 
 static void game_window_short_select_click_handler(ClickRecognizerRef recognizer, void *context) {
+  initialize_stat_by_complex_window();
   window_stack_push(g_stat_by_complex_window, true);
+  window_destroy(g_game_window);
 }
 
 static void game_window_short_up_click_handler(ClickRecognizerRef recognizer, void *context) {
@@ -179,8 +184,9 @@ static void game_window_short_up_click_handler(ClickRecognizerRef recognizer, vo
   
   //We check if the set is over. If it is we ask the user if the set is really over by asking him with the next window.
   if(setIsFinished(currentSetIndex)){
-    //TODO go to the window asking if set is finished
+    initialize_set_over_window();
     window_stack_push(g_set_over_window, true);
+    window_destroy(g_game_window);
   }
 }
 
@@ -200,8 +206,9 @@ static void game_window_short_down_click_handler(ClickRecognizerRef recognizer, 
   
     //We check if the set is over. If it is we ask the user if the set is really over by asking him with the next window.
   if(setIsFinished(currentSetIndex)){
-    //TODO go to the window asking if set is finished
+    initialize_set_over_window();
     window_stack_push(g_set_over_window, true);
+    window_destroy(g_game_window);
   }
 }
 
@@ -210,13 +217,19 @@ static void game_window_long_up_click_handler(ClickRecognizerRef recognizer, voi
     undoLastAction();
     
     //Computing and dsplaying new values with the changed informations
-      updateUI();
+    updateUI();
+}
+static void game_window_short_back_click_handler(ClickRecognizerRef recognizer, void *context) {
+    initialize_setter_and_complex_choice_window();
+    window_stack_push(g_setter_and_complex_choice_window, true);
+    window_destroy(g_game_window);
 }
 
 static void game_window_click_config_provider(void *context) {
     ButtonId idSelect = BUTTON_ID_SELECT;  // The Select button
     ButtonId idUp = BUTTON_ID_UP; //The up button
     ButtonId idDown = BUTTON_ID_DOWN; //The down button
+    ButtonId idBack = BUTTON_ID_BACK; //The back button
   
     uint16_t delay_ms_long_click_up = 500;         // Minimum time pressed to fire long click up
     //uint16_t delay_ms_long_click_down = 500;         // Minimum time pressed to fire long click down
@@ -227,6 +240,7 @@ static void game_window_click_config_provider(void *context) {
     window_single_click_subscribe(idSelect, game_window_short_select_click_handler);
     window_single_click_subscribe(idUp, game_window_short_up_click_handler);
     window_single_click_subscribe(idDown,game_window_short_down_click_handler);
+    window_single_click_subscribe(idBack,game_window_short_back_click_handler); 
   
     window_long_click_subscribe(idUp, delay_ms_long_click_up, game_window_long_up_click_handler,NULL);
     //window_long_click_subscribe(idDown, delay_ms_long_click_down, long_down_click_handler,NULL);

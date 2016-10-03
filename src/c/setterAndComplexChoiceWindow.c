@@ -2,6 +2,7 @@
 #include "setterAndComplexChoiceWindow.h"
 #include "windows.h"
 #include "data.h"
+#include "gameWindow.h"
 
 #define NUM_MENU_SECTIONS 1
 #define NUM_FIRST_MENU_ITEMS 3
@@ -52,7 +53,9 @@ static void menu_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, v
           menu_layer_reload_data(s_menu_layer);
           break;
         case 2: 
+          initialize_game_window();
           window_stack_push(g_game_window, true);
+          window_destroy(g_setter_and_complex_choice_window);
           break;
       }
   

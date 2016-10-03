@@ -5,10 +5,59 @@
 
 #define NUM_MENU_SECTIONS 1
 #define NUM_FIRST_MENU_ITEMS 3
+#include "T3Window.h"
+
 
 
 static MenuLayer *s_menu_layer;
+static T3Window * myT3Window;
+  
+const char * keyboardSet1[] = {T3_LAYOUT_LOWERCASE, T3_LAYOUT_UPPERCASE};
+const char * keyboardSet2[] = {T3_LAYOUT_NUMBERS};
+const char * keyboardSet3[] = {T3_LAYOUT_PUNC, T3_LAYOUT_BRACKETS};
+char* email = "";
 
+void sendStats(const char* text){
+  // Create dictionary
+  DictionaryIterator *iter;
+  
+  app_message_outbox_begin(&iter);
+  
+  char* current_stat_buffer = malloc(sizeof(char) * 10);
+  int setterOrder[6] = {0,5,4,3,2,1};
+  int n = 0;
+  for(int i = 0;i<5;i++){
+    for(int j = 0;j<6;j++){
+      for(int k = 0;k<2;k++){
+        for(int l = 0;l<2;l++){
+          int setter = setterOrder[j];
+          int current_stat = dataVariable[i][setter][k][l];
+          snprintf(current_stat_buffer, 30,"%d",current_stat);
+          dict_write_cstring(iter,n,current_stat_buffer);
+          //dict_write_uint8(iter, n, dataVariable[i][setter][k][l]);
+          n++;
+        }
+      }
+    }
+  }
+  free(current_stat_buffer);
+  dict_write_cstring(iter,130,text);
+  // Send the message!
+  app_message_outbox_send();
+}
+void myCloseHandler(const char * text) {
+    t3window_destroy(myT3Window);
+    sendStats(text);
+}
+void displayKeyboard(){
+  myT3Window = t3window_create(
+    keyboardSet1, 2,
+    keyboardSet2, 1,
+    keyboardSet3, 2,
+    (T3CloseHandler)myCloseHandler);
+  
+  t3window_show(myT3Window, true);
+}
 static uint16_t menu_get_num_sections_callback(MenuLayer *menu_layer, void *data) {
   return NUM_MENU_SECTIONS;
 }
@@ -42,7 +91,7 @@ static void menu_draw_row_callback(GContext* ctx, const Layer *cell_layer, MenuI
 static void menu_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {
   switch (cell_index->row) {
         case 0:
-          sendStats();
+          displayKeyboard();
           break;
         case 1:
           printf("Smth");
@@ -50,6 +99,7 @@ static void menu_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, v
           break;
         case 2:
           window_stack_pop_all(true);
+          window_destroy(g_match_over_window);
       }
   
 }
@@ -101,7 +151,7 @@ void initialize_match_over_window(){
   
   //Setting the click handler
   window_set_click_config_provider(g_match_over_window, match_over_click_config_provider);
-
+  
   //Set handlers to manage the elements inside the Window
   window_set_window_handlers(g_match_over_window, (WindowHandlers) {
     .load = match_over_load,
