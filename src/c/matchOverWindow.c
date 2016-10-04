@@ -2,6 +2,7 @@
 #include "matchOverWindow.h"
 #include "windows.h"
 #include "data.h"
+#include "statByComplexWindow.h"
 
 #define NUM_MENU_SECTIONS 1
 #define NUM_FIRST_MENU_ITEMS 3
@@ -94,8 +95,9 @@ static void menu_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, v
           displayKeyboard();
           break;
         case 1:
-          printf("Smth");
-          //TODO : PUSH THE DATA FROM EVERY SET SOMEHOW
+          initialize_stat_by_complex_window(0,0);
+          window_stack_push(g_stat_by_complex_window, true);
+          window_destroy(g_game_window);
           break;
         case 2:
           window_stack_pop_all(true);

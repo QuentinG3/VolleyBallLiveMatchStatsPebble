@@ -161,7 +161,7 @@ void updateUI(){
 }
 
 static void game_window_short_select_click_handler(ClickRecognizerRef recognizer, void *context) {
-  initialize_stat_by_complex_window();
+  initialize_stat_by_complex_window(currentSetIndex,1);
   window_stack_push(g_stat_by_complex_window, true);
   window_destroy(g_game_window);
 }
@@ -243,7 +243,7 @@ static void game_window_click_config_provider(void *context) {
     window_single_click_subscribe(idBack,game_window_short_back_click_handler); 
   
     window_long_click_subscribe(idUp, delay_ms_long_click_up, game_window_long_up_click_handler,NULL);
-    //window_long_click_subscribe(idDown, delay_ms_long_click_down, long_down_click_handler,NULL);
+    //window_long_click_subscribe(idDown, delay_ms_long_click_down, game_window_long_down_click_handler,NULL);
     //window_long_click_subscribe(idSelect, delay_ms_long_click_select, long_select_click_handler,NULL);
   
 }
