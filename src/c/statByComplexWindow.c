@@ -733,7 +733,10 @@ static void stat_by_complex_short_select_click_handler(ClickRecognizerRef recogn
   }
 }
 static void stat_by_complex_short_up_click_handler(ClickRecognizerRef recognizer, void *context) {
-  if(setNumber > 0){
+  if(setNumber == 0){
+    setNumber = 5;
+  }
+  else{
     setNumber--;
   }
   if(displayComplex){
@@ -744,7 +747,10 @@ static void stat_by_complex_short_up_click_handler(ClickRecognizerRef recognizer
   }
 }
 static void stat_by_complex_short_down_click_handler(ClickRecognizerRef recognizer, void *context) {
-  if(setNumber < 5){
+  if(setNumber == 5){
+    setNumber = 0;
+  }
+  else{
     setNumber++;
   }
   if(displayComplex){
