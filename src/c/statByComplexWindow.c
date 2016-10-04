@@ -55,9 +55,14 @@ char* s_C2_S5_percentage_text_buffer;
 char* s_C2_S6_percentage_text_buffer;
 
 void computeAndDisplaySetLabel(){
+  if(setNumber == 5){
+    text_layer_set_text(s_set_label_layer, "Total");
+  }
+  else{
   //Displaying percentage
   snprintf(s_set_label_text_buffer, 30,"Set %d",(int)(setNumber+1));
   text_layer_set_text(s_set_label_layer, s_set_label_text_buffer);
+  }
   
 }
 
@@ -739,7 +744,7 @@ static void stat_by_complex_short_up_click_handler(ClickRecognizerRef recognizer
   }
 }
 static void stat_by_complex_short_down_click_handler(ClickRecognizerRef recognizer, void *context) {
-  if(setNumber < 4){
+  if(setNumber < 5){
     setNumber++;
   }
   if(displayComplex){

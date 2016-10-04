@@ -9,12 +9,14 @@
 
 
   
-int dataVariable[NUM_MAX_SET][NUM_SETTER_POSITION][NUM_COMPLEX][2] = {{{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}}},
+int dataVariable[NUM_MAX_SET+1][NUM_SETTER_POSITION][NUM_COMPLEX][2] = {{{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}}},
                                                                      {{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}}},
                                                                      {{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}}},
                                                                      {{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}}},
-                                                                     {{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}}}};
-  
+                                                                     {{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}}},
+                                                                      {{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}},{{0,0},{0,0}}}};
+
+
 int  currentSetIndex = 0;
 char*  serveNames[NUM_COMPLEX] = {"Opponent","Team"};
 char*  complexNames[NUM_COMPLEX] = {"C1","C2"};
@@ -121,6 +123,7 @@ void undoLastAction(){
       currentSetterPositionIndex = elem.setterPosition;
       currentComplexIndex = elem.complex;
       dataVariable[currentSetIndex][currentSetterPositionIndex][currentComplexIndex][elem.win]--;
+      dataVariable[5][currentSetterPositionIndex][currentComplexIndex][elem.win]--;
   }
 }
 
