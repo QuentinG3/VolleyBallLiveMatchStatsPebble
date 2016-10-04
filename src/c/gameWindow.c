@@ -233,6 +233,15 @@ static void game_window_long_down_click_handler(ClickRecognizerRef recognizer, v
   window_stack_push(g_stat_by_complex_window, true);
   window_destroy(g_game_window);
 }
+static void game_window_long_select_click_handler(ClickRecognizerRef recognizer, void *context) {
+  //Reset the data
+  reinitializeData();
+
+
+  initialize_setter_and_complex_choice_window();
+  window_stack_push(g_setter_and_complex_choice_window, true);
+  window_destroy(g_game_window);
+}
 
 static void game_window_click_config_provider(void *context) {
     ButtonId idSelect = BUTTON_ID_SELECT;  // The Select button
@@ -242,7 +251,7 @@ static void game_window_click_config_provider(void *context) {
   
     uint16_t delay_ms_long_click_up = 500;         // Minimum time pressed to fire long click up
     uint16_t delay_ms_long_click_down = 500;         // Minimum time pressed to fire long click down
-    //uint16_t delay_ms_long_click_select = 1000;   // Minimum time pressed to fire long click select
+    uint16_t delay_ms_long_click_select = 2000;   // Minimum time pressed to fire long click select
 
   
   
@@ -253,7 +262,7 @@ static void game_window_click_config_provider(void *context) {
   
     window_long_click_subscribe(idUp, delay_ms_long_click_up, game_window_long_up_click_handler,NULL);
     window_long_click_subscribe(idDown, delay_ms_long_click_down, game_window_long_down_click_handler,NULL);
-    //window_long_click_subscribe(idSelect, delay_ms_long_click_select, long_select_click_handler,NULL);
+    window_long_click_subscribe(idSelect, delay_ms_long_click_select, game_window_long_select_click_handler,NULL);
   
 }
 

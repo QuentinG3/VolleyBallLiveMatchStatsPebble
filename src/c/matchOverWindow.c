@@ -35,7 +35,6 @@ void sendStats(const char* text){
           int current_stat = dataVariable[i][setter][k][l];
           snprintf(current_stat_buffer, 30,"%d",current_stat);
           dict_write_cstring(iter,n,current_stat_buffer);
-          //dict_write_uint8(iter, n, dataVariable[i][setter][k][l]);
           n++;
         }
       }

@@ -22,6 +22,8 @@ stackT historicStack[NUM_MAX_SET];
 void initializeHistoricStack();
 void deinitializeHistoricStack();
 
+void reinitializeData();
+
 int setIsFinished(int setIndex);
 int computeHomeScore(int setIndex);
 int computeAwayScore(int setIndex);
@@ -31,4 +33,3 @@ int next_complex();
 int gotoNextSet();
 void undoLastAction();
 int matchOver();
-//void sendStats();

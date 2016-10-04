@@ -38,6 +38,28 @@ void deinitializeHistoricStack(){
     StackDestroy(&historicStack[i]);
   }
 }
+void reinitializeData(){
+  for(int i = 0;i<6;i++){
+    for(int j = 0;j<6;j++){
+      for(int k = 0;k<2;k++){
+        for(int l = 0;l<2;l++){
+          dataVariable[i][j][k][l] = 0;
+        }
+      }
+    }
+  }
+  
+  currentSetIndex = 0;
+  currentComplexIndex = 0;
+  currentSetterPositionIndex = 0;
+  for(int i = 0; i < 4;i++){
+    setWon[i] = -1;
+  }
+  //Reset the historic
+  deinitializeHistoricStack();
+  initializeHistoricStack();
+  
+}
 
 int setIsFinished(int setIndex){
   int homeScore = computeHomeScore(setIndex);
