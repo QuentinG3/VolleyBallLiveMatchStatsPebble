@@ -292,7 +292,7 @@ static void game_window_load(Window *window) {
   
   //Creating the C1 text Layer 
   s_C1_layer = text_layer_create(
-  GRect(0, 2*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  GRect(PBL_IF_ROUND_ELSE((bounds.size.w/10),0), 2*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
   
   text_layer_set_background_color(s_C1_layer, GColorClear);
   text_layer_set_text_color(s_C1_layer, GColorBlack);
@@ -317,7 +317,7 @@ static void game_window_load(Window *window) {
  //Creating the C1 percentage text Layer 
 
   s_C1_percentage_layer = text_layer_create(
-  GRect(2*(bounds.size.w/10), 2*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  GRect(PBL_IF_ROUND_ELSE(3*(bounds.size.w/10),2*(bounds.size.w/10)), 2*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
   
   text_layer_set_background_color(s_C1_percentage_layer, GColorClear);
   computeAndDisplayC1Percentage();
@@ -362,49 +362,46 @@ static void game_window_load(Window *window) {
   
   layer_add_child(window_layer, text_layer_get_layer(s_C1_C2_percentage_layer));
   
-    
+
   //Creating the serve indication left text Layer 
   s_service_indication_left_layer = text_layer_create(
-  GRect(0, 6*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  GRect(PBL_IF_ROUND_ELSE(bounds.size.w/10,0), PBL_IF_ROUND_ELSE(5*(bounds.size.h/10),6*(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
   
   text_layer_set_background_color(s_service_indication_left_layer, GColorClear);
-  text_layer_set_text_color(s_service_indication_left_layer, GColorGreen);
+  text_layer_set_text_color(s_service_indication_left_layer, PBL_IF_BW_ELSE(GColorBlack, GColorGreen));
   text_layer_set_text(s_service_indication_left_layer, "[--Serve--]");
   text_layer_set_text_alignment(s_service_indication_left_layer, GTextAlignmentLeft);
   text_layer_set_font(s_service_indication_left_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
   
   layer_add_child(window_layer, text_layer_get_layer(s_service_indication_left_layer));
-  
+
   //Creating the serve indication right text Layer 
   s_service_indication_right_layer = text_layer_create(
-  GRect(0, 6*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
+  GRect(0, PBL_IF_ROUND_ELSE(5*(bounds.size.h/10),6*(bounds.size.h/10)) , PBL_IF_ROUND_ELSE(9*(bounds.size.w/10),bounds.size.w), bounds.size.h));
   text_layer_set_background_color(s_service_indication_right_layer, GColorClear);
   text_layer_set_text_color(s_service_indication_right_layer, GColorRed);
   text_layer_set_text(s_service_indication_right_layer, "[--Serve--]");
   text_layer_set_text_alignment(s_service_indication_right_layer, GTextAlignmentRight);
   text_layer_set_font(s_service_indication_right_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
+
   layer_add_child(window_layer, text_layer_get_layer(s_service_indication_right_layer));
 
-  
   computeAndDisplayServe();
-    
   //Creating score home text Layer 
   s_home_team_score_layer = text_layer_create(
-  GRect((bounds.size.w/10), 7*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  GRect(PBL_IF_ROUND_ELSE(2*(bounds.size.w/10),(bounds.size.w/10)),PBL_IF_ROUND_ELSE(6*(bounds.size.h/10),7*(bounds.size.h/10)), bounds.size.w, bounds.size.h));
   
   text_layer_set_background_color(s_home_team_score_layer, GColorClear);
-  text_layer_set_text_color(s_home_team_score_layer, GColorGreen);
+  text_layer_set_text_color(s_home_team_score_layer, PBL_IF_BW_ELSE(GColorBlack, GColorGreen));
   computeAndDisplayHomeScore();
   text_layer_set_text_alignment(s_home_team_score_layer, GTextAlignmentLeft);
   text_layer_set_font(s_home_team_score_layer,fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
   
   layer_add_child(window_layer, text_layer_get_layer(s_home_team_score_layer));
-  
+
   //Creating the score away text Layer 
   s_away_team_score_layer = text_layer_create(
-  GRect(0, 7*(bounds.size.h/10) , 9*(bounds.size.w/10), bounds.size.h));
+  GRect(0, PBL_IF_ROUND_ELSE(6*(bounds.size.h/10),7*(bounds.size.h/10)) , PBL_IF_ROUND_ELSE(8*(bounds.size.w/10),9*(bounds.size.w/10)), bounds.size.h));
   
   text_layer_set_background_color(s_away_team_score_layer, GColorClear);
   text_layer_set_text_color(s_away_team_score_layer, GColorRed);

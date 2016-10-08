@@ -14,7 +14,7 @@ char* serveNames[NUM_COMPLEX];
 
 int currentSetIndex;
 
-int8_t dataVariable[NUM_MAX_SET+1][NUM_SETTER_POSITION][NUM_COMPLEX][2];
+int dataVariable[NUM_MAX_SET+1][NUM_SETTER_POSITION][NUM_COMPLEX][2];
 
 int setWon[NUM_MAX_SET];
 

@@ -63,14 +63,14 @@ void computeAndDisplaySetLabel(){
   snprintf(s_set_label_text_buffer, 30,"Set %d",(int)(setNumber+1));
   text_layer_set_text(s_set_label_layer, s_set_label_text_buffer);
   }
-  
+
 }
 
-void computeAndDisplayC1S1(){
+void computeAndDisplayS1(int complex,TextLayer *layer, char* text_buffer){
   //Computing percentage
-  double numerator = (double)dataVariable[setNumber][0][0][0];
-  double denominator = numerator + (double)dataVariable[setNumber][0][0][1];
-    
+  double numerator = (double)dataVariable[setNumber][0][complex][0];
+  double denominator = numerator + (double)dataVariable[setNumber][0][complex][1];
+
   double percentage;
   if(denominator == 0){
     percentage = 0;
@@ -79,23 +79,23 @@ void computeAndDisplayC1S1(){
     percentage = (numerator / denominator)*100;
   }
   if(percentage < 60){
-    text_layer_set_text_color(s_C1_S1_percentage_layer, GColorRed);
+    text_layer_set_text_color(layer, GColorRed);
   }
   else{
-    text_layer_set_text_color(s_C1_S1_percentage_layer, GColorBlack);
+    text_layer_set_text_color(layer, GColorBlack);
   }
-  
+
   //Displaying percentage
-  snprintf(s_C1_S1_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C1_S1_percentage_text_buffer,"%");
-  text_layer_set_text(s_C1_S1_percentage_layer, s_C1_S1_percentage_text_buffer);
-  
+  snprintf(text_buffer, 30,"%d",(int)percentage);
+  strcat(text_buffer,"%");
+  text_layer_set_text(layer,text_buffer);
+
 }
-void computeAndDisplayC1S6(){
+void computeAndDisplayS6(int complex,TextLayer *layer, char* text_buffer){
   //Computing percentage
-  double numerator = (double)dataVariable[setNumber][5][0][0];
-  double denominator = numerator + (double)dataVariable[setNumber][5][0][1];
-  
+  double numerator = (double)dataVariable[setNumber][5][complex][0];
+  double denominator = numerator + (double)dataVariable[setNumber][5][complex][1];
+
   double percentage;
   if(denominator == 0){
     percentage = 0;
@@ -104,22 +104,22 @@ void computeAndDisplayC1S6(){
     percentage = (numerator / denominator)*100;
   }
   if(percentage < 60){
-    text_layer_set_text_color(s_C1_S6_percentage_layer, GColorRed);
+    text_layer_set_text_color(layer, GColorRed);
   }
   else{
-    text_layer_set_text_color(s_C1_S6_percentage_layer, GColorBlack);
+    text_layer_set_text_color(layer, GColorBlack);
   }
-  
+
   //Displaying percentage
-  snprintf(s_C1_S6_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C1_S6_percentage_text_buffer,"%");
-  text_layer_set_text(s_C1_S6_percentage_layer, s_C1_S6_percentage_text_buffer);
+  snprintf(text_buffer, 30,"%d",(int)percentage);
+  strcat(text_buffer,"%");
+  text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayC1S5(){
+void computeAndDisplayS5(int complex,TextLayer *layer, char* text_buffer){
   //Computing percentage
-  double numerator = (double)dataVariable[setNumber][4][0][0];
-  double denominator = numerator + (double)dataVariable[setNumber][4][0][1];
-  
+  double numerator = (double)dataVariable[setNumber][4][complex][0];
+  double denominator = numerator + (double)dataVariable[setNumber][4][complex][1];
+
   double percentage;
   if(denominator == 0){
     percentage = 0;
@@ -128,22 +128,22 @@ void computeAndDisplayC1S5(){
     percentage = (numerator / denominator)*100;
   }
   if(percentage < 60){
-    text_layer_set_text_color(s_C1_S5_percentage_layer, GColorRed);
+    text_layer_set_text_color(layer, GColorRed);
   }
   else{
-    text_layer_set_text_color(s_C1_S5_percentage_layer, GColorBlack);
+    text_layer_set_text_color(layer, GColorBlack);
   }
-  
+
   //Displaying percentage
-  snprintf(s_C1_S5_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C1_S5_percentage_text_buffer,"%");
-  text_layer_set_text(s_C1_S5_percentage_layer, s_C1_S5_percentage_text_buffer);
+  snprintf(text_buffer, 30,"%d",(int)percentage);
+  strcat(text_buffer,"%");
+  text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayC1S4(){
+void computeAndDisplayS4(int complex,TextLayer *layer, char* text_buffer){
   //Computing percentage
-  double numerator = (double)dataVariable[setNumber][3][0][0];
-  double denominator = numerator + (double)dataVariable[setNumber][3][0][1];
-  
+  double numerator = (double)dataVariable[setNumber][3][complex][0];
+  double denominator = numerator + (double)dataVariable[setNumber][3][complex][1];
+
   double percentage;
   if(denominator == 0){
     percentage = 0;
@@ -152,22 +152,22 @@ void computeAndDisplayC1S4(){
     percentage = (numerator / denominator)*100;
   }
   if(percentage < 60){
-    text_layer_set_text_color(s_C1_S4_percentage_layer, GColorRed);
+    text_layer_set_text_color(layer, GColorRed);
   }
   else{
-    text_layer_set_text_color(s_C1_S4_percentage_layer, GColorBlack);
+    text_layer_set_text_color(layer, GColorBlack);
   }
-  
+
   //Displaying percentage
-  snprintf(s_C1_S4_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C1_S4_percentage_text_buffer,"%");
-  text_layer_set_text(s_C1_S4_percentage_layer, s_C1_S4_percentage_text_buffer);
+  snprintf(text_buffer, 30,"%d",(int)percentage);
+  strcat(text_buffer,"%");
+  text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayC1S3(){
+void computeAndDisplayS3(int complex,TextLayer *layer, char* text_buffer){
   //Computing percentage
-  double numerator = (double)dataVariable[setNumber][2][0][0];
-  double denominator = numerator + (double)dataVariable[setNumber][2][0][1];
-  
+  double numerator = (double)dataVariable[setNumber][2][complex][0];
+  double denominator = numerator + (double)dataVariable[setNumber][2][complex][1];
+
   double percentage;
   if(denominator == 0){
     percentage = 0;
@@ -176,22 +176,22 @@ void computeAndDisplayC1S3(){
     percentage = (numerator / denominator)*100;
   }
   if(percentage < 60){
-    text_layer_set_text_color(s_C1_S3_percentage_layer, GColorRed);
+    text_layer_set_text_color(layer, GColorRed);
   }
   else{
-    text_layer_set_text_color(s_C1_S3_percentage_layer, GColorBlack);
+    text_layer_set_text_color(layer, GColorBlack);
   }
-  
+
   //Displaying percentage
-  snprintf(s_C1_S3_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C1_S3_percentage_text_buffer,"%");
-  text_layer_set_text(s_C1_S3_percentage_layer, s_C1_S3_percentage_text_buffer);
+  snprintf(text_buffer, 30,"%d",(int)percentage);
+  strcat(text_buffer,"%");
+  text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayC1S2(){
+void computeAndDisplayS2(int complex,TextLayer *layer, char* text_buffer){
   //Computing percentage
-  double numerator = (double)dataVariable[setNumber][1][0][0];
-  double denominator = numerator + (double)dataVariable[setNumber][1][0][1];
-  
+  double numerator = (double)dataVariable[setNumber][1][complex][0];
+  double denominator = numerator + (double)dataVariable[setNumber][1][complex][1];
+
   double percentage;
   if(denominator == 0){
     percentage = 0;
@@ -200,24 +200,23 @@ void computeAndDisplayC1S2(){
     percentage = (numerator / denominator)*100;
   }
   if(percentage < 60){
-    text_layer_set_text_color(s_C1_S2_percentage_layer, GColorRed);
+    text_layer_set_text_color(layer, GColorRed);
   }
   else{
-    text_layer_set_text_color(s_C1_S2_percentage_layer, GColorBlack);
+    text_layer_set_text_color(layer, GColorBlack);
   }
-  
+
   //Displaying percentage
-  snprintf(s_C1_S2_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C1_S2_percentage_text_buffer,"%");
-  text_layer_set_text(s_C1_S2_percentage_layer, s_C1_S2_percentage_text_buffer);
+  snprintf(text_buffer, 30,"%d",(int)percentage);
+  strcat(text_buffer,"%");
+  text_layer_set_text(layer, text_buffer);
 }
 
+void computeAndDisplaySetter(int complex,TextLayer *layer, char* text_buffer){
+  //Computing percentage
+  double numerator = (double)dataVariable[setNumber][3][complex][0] + (double)dataVariable[setNumber][2][complex][0] + (double)dataVariable[setNumber][1][complex][0];
+  double denominator = numerator + (double)dataVariable[setNumber][3][complex][1] + (double)dataVariable[setNumber][2][complex][1] + (double)dataVariable[setNumber][1][complex][1];
 
-void computeAndDisplayC2S1(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][0][1][0];
-  double denominator = numerator + (double)dataVariable[setNumber][0][1][1];
-  
   double percentage;
   if(denominator == 0){
     percentage = 0;
@@ -225,290 +224,24 @@ void computeAndDisplayC2S1(){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 40){
-    text_layer_set_text_color(s_C2_S1_percentage_layer, GColorRed);
+  if(percentage < 60){
+    text_layer_set_text_color(layer, GColorRed);
   }
   else{
-    text_layer_set_text_color(s_C2_S1_percentage_layer, GColorBlack);
+    text_layer_set_text_color(layer, GColorBlack);
   }
-  
-  //Displaying percentage
-  snprintf(s_C2_S1_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C2_S1_percentage_text_buffer,"%");
-  text_layer_set_text(s_C2_S1_percentage_layer, s_C2_S1_percentage_text_buffer);
-}
-void computeAndDisplayC2S6(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][5][1][0];
-  double denominator = numerator + (double)dataVariable[setNumber][5][1][1];
-  
-  double percentage;
-  if(denominator == 0){
-    percentage = 0;
-  }
-  else{
-    percentage = (numerator / denominator)*100;
-  }
-  if(percentage < 40){
-    text_layer_set_text_color(s_C2_S6_percentage_layer, GColorRed);
-  }
-  else{
-    text_layer_set_text_color(s_C2_S6_percentage_layer, GColorBlack);
-  }
-  
-  //Displaying percentage
-  snprintf(s_C2_S6_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C2_S6_percentage_text_buffer,"%");
-  text_layer_set_text(s_C2_S6_percentage_layer, s_C2_S6_percentage_text_buffer);
-}
-void computeAndDisplayC2S5(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][4][1][0];
-  double denominator = numerator + (double)dataVariable[setNumber][4][1][1];
-  
-  double percentage;
-  if(denominator == 0){
-    percentage = 0;
-  }
-  else{
-    percentage = (numerator / denominator)*100;
-  }
-  if(percentage < 40){
-    text_layer_set_text_color(s_C2_S5_percentage_layer, GColorRed);
-  }
-  else{
-    text_layer_set_text_color(s_C2_S5_percentage_layer, GColorBlack);
-  }
-  
-  //Displaying percentage
-  snprintf(s_C2_S5_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C2_S5_percentage_text_buffer,"%");
-  text_layer_set_text(s_C2_S5_percentage_layer, s_C2_S5_percentage_text_buffer);
-}
-void computeAndDisplayC2S4(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][3][1][0];
-  double denominator = numerator + (double)dataVariable[setNumber][3][1][1];
-  
-  double percentage;
-  if(denominator == 0){
-    percentage = 0;
-  }
-  else{
-    percentage = (numerator / denominator)*100;
-  }
-  if(percentage < 40){
-    text_layer_set_text_color(s_C2_S4_percentage_layer, GColorRed);
-  }
-  else{
-    text_layer_set_text_color(s_C2_S4_percentage_layer, GColorBlack);
-  }
-  
-  //Displaying percentage
-  snprintf(s_C2_S4_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C2_S4_percentage_text_buffer,"%");
-  text_layer_set_text(s_C2_S4_percentage_layer, s_C2_S4_percentage_text_buffer);
-}
-void computeAndDisplayC2S3(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][2][1][0];
-  double denominator = numerator + (double)dataVariable[setNumber][2][1][1];
-  
-  double percentage;
-  if(denominator == 0){
-    percentage = 0;
-  }
-  else{
-    percentage = (numerator / denominator)*100;
-  }
-  if(percentage < 40){
-    text_layer_set_text_color(s_C2_S3_percentage_layer, GColorRed);
-  }
-  else{
-    text_layer_set_text_color(s_C2_S3_percentage_layer, GColorBlack);
-  }
-  
-  //Displaying percentage
-  snprintf(s_C2_S3_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C2_S3_percentage_text_buffer,"%");
-  text_layer_set_text(s_C2_S3_percentage_layer, s_C2_S3_percentage_text_buffer);
-}
-void computeAndDisplayC2S2(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][1][1][0];
-  double denominator = numerator + (double)dataVariable[setNumber][1][1][1];
-  double percentage;
-  if(denominator == 0){
-    percentage = 0;
-  }
-  else{
-    percentage = (numerator / denominator)*100;
-  }
-  
-  if(percentage < 40){
-    text_layer_set_text_color(s_C2_S2_percentage_layer, GColorRed);
-  }
-  else{
-    text_layer_set_text_color(s_C2_S2_percentage_layer, GColorBlack);
-  }
-  //Displaying percentage
-  snprintf(s_C2_S2_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C2_S2_percentage_text_buffer,"%");
-  text_layer_set_text(s_C2_S2_percentage_layer, s_C2_S2_percentage_text_buffer);
-}
 
-void computeAndDisplayC1Setter(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][3][0][0] + (double)dataVariable[setNumber][2][0][0] + (double)dataVariable[setNumber][1][0][0];
-  double denominator = numerator + (double)dataVariable[setNumber][3][0][1] + (double)dataVariable[setNumber][2][0][1] + (double)dataVariable[setNumber][1][0][1];
-    
-  double percentage;
-  if(denominator == 0){
-    percentage = 0;
-  }
-  else{
-    percentage = (numerator / denominator)*100;
-  }
-  if(percentage < 60){
-    text_layer_set_text_color(s_C1_S1_percentage_layer, GColorRed);
-  }
-  else{
-    text_layer_set_text_color(s_C1_S1_percentage_layer, GColorBlack);
-  }
-  
   //Displaying percentage
-  snprintf(s_C1_S1_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C1_S1_percentage_text_buffer,"%");
-  text_layer_set_text(s_C1_S1_percentage_layer, s_C1_S1_percentage_text_buffer);
-  
-}
-void computeAndDisplayC1R2(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][3][0][0] + (double)dataVariable[setNumber][2][0][0] + (double)dataVariable[setNumber][1][0][0];
-  double denominator = numerator + (double)dataVariable[setNumber][3][0][1] + (double)dataVariable[setNumber][2][0][1] + (double)dataVariable[setNumber][1][0][1];
-  
-  double percentage;
-  if(denominator == 0){
-    percentage = 0;
-  }
-  else{
-    percentage = (numerator / denominator)*100;
-  }
-  if(percentage < 60){
-    text_layer_set_text_color(s_C1_S3_percentage_layer, GColorRed);
-  }
-  else{
-    text_layer_set_text_color(s_C1_S3_percentage_layer, GColorBlack);
-  }
-  
-  //Displaying percentage
-  snprintf(s_C1_S3_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C1_S3_percentage_text_buffer,"%");
-  text_layer_set_text(s_C1_S3_percentage_layer, s_C1_S3_percentage_text_buffer);
-}
-void computeAndDisplayC1R5(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][5][0][0] + (double)dataVariable[setNumber][4][0][0] + (double)dataVariable[setNumber][2][0][0];
-  double denominator = numerator + (double)dataVariable[setNumber][5][0][1] + (double)dataVariable[setNumber][4][0][1] + (double)dataVariable[setNumber][3][0][1];
-  
-  double percentage;
-  if(denominator == 0){
-    percentage = 0;
-  }
-  else{
-    percentage = (numerator / denominator)*100;
-  }
-  if(percentage < 60){
-    text_layer_set_text_color(s_C1_S2_percentage_layer, GColorRed);
-  }
-  else{
-    text_layer_set_text_color(s_C1_S2_percentage_layer, GColorBlack);
-  }
-  
-  //Displaying percentage
-  snprintf(s_C1_S2_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C1_S2_percentage_text_buffer,"%");
-  text_layer_set_text(s_C1_S2_percentage_layer, s_C1_S2_percentage_text_buffer);
-}
-void computeAndDisplayC1opposite(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][0][0][0] + (double)dataVariable[setNumber][5][0][0] + (double)dataVariable[setNumber][4][0][0];
-  double denominator = numerator + (double)dataVariable[setNumber][0][0][1] + (double)dataVariable[setNumber][5][0][1] + (double)dataVariable[setNumber][4][0][1];
-  
-  double percentage;
-  if(denominator == 0){
-    percentage = 0;
-  }
-  else{
-    percentage = (numerator / denominator)*100;
-  }
-  if(percentage < 60){
-    text_layer_set_text_color(s_C1_S4_percentage_layer, GColorRed);
-  }
-  else{
-    text_layer_set_text_color(s_C1_S4_percentage_layer, GColorBlack);
-  }
-  
-  //Displaying percentage
-  snprintf(s_C1_S4_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C1_S4_percentage_text_buffer,"%");
-  text_layer_set_text(s_C1_S4_percentage_layer, s_C1_S4_percentage_text_buffer);
-}
-void computeAndDisplayC1M3(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][1][0][0] + (double)dataVariable[setNumber][0][0][0] + (double)dataVariable[setNumber][5][0][0];
-  double denominator = numerator + (double)dataVariable[setNumber][1][0][1] + (double)dataVariable[setNumber][0][0][1] + (double)dataVariable[setNumber][5][0][1];
-  
-  double percentage;
-  if(denominator == 0){
-    percentage = 0;
-  }
-  else{
-    percentage = (numerator / denominator)*100;
-  }
-  if(percentage < 60){
-    text_layer_set_text_color(s_C1_S6_percentage_layer, GColorRed);
-  }
-  else{
-    text_layer_set_text_color(s_C1_S6_percentage_layer, GColorBlack);
-  }
-  
-  //Displaying percentage
-  snprintf(s_C1_S6_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C1_S6_percentage_text_buffer,"%");
-  text_layer_set_text(s_C1_S6_percentage_layer, s_C1_S6_percentage_text_buffer);
-}
-void computeAndDisplayC1M6(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][4][0][0] + (double)dataVariable[setNumber][3][0][0] + (double)dataVariable[setNumber][2][0][0];
-  double denominator = numerator + (double)dataVariable[setNumber][4][0][1] + (double)dataVariable[setNumber][3][0][1] + (double)dataVariable[setNumber][2][0][1];
-  
-  double percentage;
-  if(denominator == 0){
-    percentage = 0;
-  }
-  else{
-    percentage = (numerator / denominator)*100;
-  }
-  if(percentage < 60){
-    text_layer_set_text_color(s_C1_S5_percentage_layer, GColorRed);
-  }
-  else{
-    text_layer_set_text_color(s_C1_S5_percentage_layer, GColorBlack);
-  }
-  
-  //Displaying percentage
-  snprintf(s_C1_S5_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C1_S5_percentage_text_buffer,"%");
-  text_layer_set_text(s_C1_S5_percentage_layer, s_C1_S5_percentage_text_buffer);
-}
+  snprintf(text_buffer, 30,"%d",(int)percentage);
+  strcat(text_buffer,"%");
+  text_layer_set_text(layer, text_buffer);
 
+}
+void computeAndDisplayR2(int complex,TextLayer *layer, char* text_buffer){
+  //Computing percentage
+  double numerator = (double)dataVariable[setNumber][3][complex][0] + (double)dataVariable[setNumber][2][complex][0] + (double)dataVariable[setNumber][1][complex][0];
+  double denominator = numerator + (double)dataVariable[setNumber][3][complex][1] + (double)dataVariable[setNumber][2][complex][1] + (double)dataVariable[setNumber][1][complex][1];
 
-void computeAndDisplayC2Setter(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][3][1][0] + (double)dataVariable[setNumber][2][1][0] + (double)dataVariable[setNumber][1][1][0];
-  double denominator = numerator + (double)dataVariable[setNumber][3][1][1] + (double)dataVariable[setNumber][2][1][1] + (double)dataVariable[setNumber][1][1][1];
-  
   double percentage;
   if(denominator == 0){
     percentage = 0;
@@ -516,23 +249,23 @@ void computeAndDisplayC2Setter(){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 40){
-    text_layer_set_text_color(s_C2_S1_percentage_layer, GColorRed);
+  if(percentage < 60){
+    text_layer_set_text_color(layer, GColorRed);
   }
   else{
-    text_layer_set_text_color(s_C2_S1_percentage_layer, GColorBlack);
+    text_layer_set_text_color(layer, GColorBlack);
   }
-  
+
   //Displaying percentage
-  snprintf(s_C2_S1_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C2_S1_percentage_text_buffer,"%");
-  text_layer_set_text(s_C2_S1_percentage_layer, s_C2_S1_percentage_text_buffer);
+  snprintf(text_buffer, 30,"%d",(int)percentage);
+  strcat(text_buffer,"%");
+  text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayC2R2(){
+void computeAndDisplayR5(int complex,TextLayer *layer, char* text_buffer){
   //Computing percentage
-  double numerator = (double)dataVariable[setNumber][2][1][0] + (double)dataVariable[setNumber][1][1][0] + (double)dataVariable[setNumber][0][1][0];
-  double denominator = numerator + (double)dataVariable[setNumber][2][1][1] + (double)dataVariable[setNumber][1][1][1] + (double)dataVariable[setNumber][0][1][1];
-  
+  double numerator = (double)dataVariable[setNumber][5][complex][0] + (double)dataVariable[setNumber][4][complex][0] + (double)dataVariable[setNumber][2][complex][0];
+  double denominator = numerator + (double)dataVariable[setNumber][5][complex][1] + (double)dataVariable[setNumber][4][complex][1] + (double)dataVariable[setNumber][3][complex][1];
+
   double percentage;
   if(denominator == 0){
     percentage = 0;
@@ -540,23 +273,23 @@ void computeAndDisplayC2R2(){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 40){
-    text_layer_set_text_color(s_C2_S3_percentage_layer, GColorRed);
+  if(percentage < 60){
+    text_layer_set_text_color(layer, GColorRed);
   }
   else{
-    text_layer_set_text_color(s_C2_S3_percentage_layer, GColorBlack);
+    text_layer_set_text_color(layer, GColorBlack);
   }
-  
+
   //Displaying percentage
-  snprintf(s_C2_S3_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C2_S3_percentage_text_buffer,"%");
-  text_layer_set_text(s_C2_S3_percentage_layer, s_C2_S3_percentage_text_buffer);
+  snprintf(text_buffer, 30,"%d",(int)percentage);
+  strcat(text_buffer,"%");
+  text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayC2R5(){
+void computeAndDisplayopposite(int complex,TextLayer *layer, char* text_buffer){
   //Computing percentage
-  double numerator = (double)dataVariable[setNumber][5][1][0] + (double)dataVariable[setNumber][4][1][0] + (double)dataVariable[setNumber][3][1][0];
-  double denominator = numerator + (double)dataVariable[setNumber][5][1][1] + (double)dataVariable[setNumber][4][1][1] + (double)dataVariable[setNumber][3][1][1];
-  
+  double numerator = (double)dataVariable[setNumber][0][complex][0] + (double)dataVariable[setNumber][5][complex][0] + (double)dataVariable[setNumber][4][complex][0];
+  double denominator = numerator + (double)dataVariable[setNumber][0][complex][1] + (double)dataVariable[setNumber][5][complex][1] + (double)dataVariable[setNumber][4][complex][1];
+
   double percentage;
   if(denominator == 0){
     percentage = 0;
@@ -564,23 +297,23 @@ void computeAndDisplayC2R5(){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 40){
-    text_layer_set_text_color(s_C2_S2_percentage_layer, GColorRed);
+  if(percentage < 60){
+    text_layer_set_text_color(layer, GColorRed);
   }
   else{
-    text_layer_set_text_color(s_C2_S2_percentage_layer, GColorBlack);
+    text_layer_set_text_color(layer, GColorBlack);
   }
-  
+
   //Displaying percentage
-  snprintf(s_C2_S2_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C2_S2_percentage_text_buffer,"%");
-  text_layer_set_text(s_C2_S2_percentage_layer, s_C2_S2_percentage_text_buffer);
+  snprintf(text_buffer, 30,"%d",(int)percentage);
+  strcat(text_buffer,"%");
+  text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayC2opposite(){
+void computeAndDisplayM3(int complex,TextLayer *layer, char* text_buffer){
   //Computing percentage
-  double numerator = (double)dataVariable[setNumber][0][1][0] + (double)dataVariable[setNumber][5][1][0] + (double)dataVariable[setNumber][4][1][0];
-  double denominator = numerator + (double)dataVariable[setNumber][0][1][1] + (double)dataVariable[setNumber][5][1][1] + (double)dataVariable[setNumber][4][1][1];
-  
+  double numerator = (double)dataVariable[setNumber][1][complex][0] + (double)dataVariable[setNumber][0][complex][0] + (double)dataVariable[setNumber][5][complex][0];
+  double denominator = numerator + (double)dataVariable[setNumber][1][complex][1] + (double)dataVariable[setNumber][0][complex][1] + (double)dataVariable[setNumber][5][complex][1];
+
   double percentage;
   if(denominator == 0){
     percentage = 0;
@@ -588,23 +321,23 @@ void computeAndDisplayC2opposite(){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 40){
-    text_layer_set_text_color(s_C2_S4_percentage_layer, GColorRed);
+  if(percentage < 60){
+    text_layer_set_text_color(layer, GColorRed);
   }
   else{
-    text_layer_set_text_color(s_C2_S4_percentage_layer, GColorBlack);
+    text_layer_set_text_color(layer, GColorBlack);
   }
-  
+
   //Displaying percentage
-  snprintf(s_C2_S4_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C2_S4_percentage_text_buffer,"%");
-  text_layer_set_text(s_C2_S4_percentage_layer, s_C2_S4_percentage_text_buffer);
+  snprintf(text_buffer, 30,"%d",(int)percentage);
+  strcat(text_buffer,"%");
+  text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayC2M3(){
+void computeAndDisplayM6(int complex,TextLayer *layer, char* text_buffer){
   //Computing percentage
-  double numerator = (double)dataVariable[setNumber][1][1][0] + (double)dataVariable[setNumber][0][1][0] + (double)dataVariable[setNumber][5][1][0];
-  double denominator = numerator + (double)dataVariable[setNumber][1][1][1] + (double)dataVariable[setNumber][0][1][1] + (double)dataVariable[setNumber][5][1][1];
-  
+  double numerator = (double)dataVariable[setNumber][4][complex][0] + (double)dataVariable[setNumber][3][complex][0] + (double)dataVariable[setNumber][2][complex][0];
+  double denominator = numerator + (double)dataVariable[setNumber][4][complex][1] + (double)dataVariable[setNumber][3][complex][1] + (double)dataVariable[setNumber][2][complex][1];
+
   double percentage;
   if(denominator == 0){
     percentage = 0;
@@ -612,40 +345,17 @@ void computeAndDisplayC2M3(){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 40){
-    text_layer_set_text_color(s_C2_S6_percentage_layer, GColorRed);
+  if(percentage < 60){
+    text_layer_set_text_color(layer, GColorRed);
   }
   else{
-    text_layer_set_text_color(s_C2_S6_percentage_layer, GColorBlack);
+    text_layer_set_text_color(layer, GColorBlack);
   }
-  
+
   //Displaying percentage
-  snprintf(s_C2_S6_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C2_S6_percentage_text_buffer,"%");
-  text_layer_set_text(s_C2_S6_percentage_layer, s_C2_S6_percentage_text_buffer);
-}
-void computeAndDisplayC2M6(){
-  //Computing percentage
-  double numerator = (double)dataVariable[setNumber][4][1][0] + (double)dataVariable[setNumber][3][1][0] + (double)dataVariable[setNumber][2][1][0];
-  double denominator = numerator + (double)dataVariable[setNumber][4][1][1] + (double)dataVariable[setNumber][3][1][1] + (double)dataVariable[setNumber][2][1][1];
-  double percentage;
-  if(denominator == 0){
-    percentage = 0;
-  }
-  else{
-    percentage = (numerator / denominator)*100;
-  }
-  
-  if(percentage < 40){
-    text_layer_set_text_color(s_C2_S5_percentage_layer, GColorRed);
-  }
-  else{
-    text_layer_set_text_color(s_C2_S5_percentage_layer, GColorBlack);
-  }
-  //Displaying percentage
-  snprintf(s_C2_S5_percentage_text_buffer, 30,"%d",(int)percentage);
-  strcat(s_C2_S5_percentage_text_buffer,"%");
-  text_layer_set_text(s_C2_S5_percentage_layer, s_C2_S5_percentage_text_buffer);
+  snprintf(text_buffer, 30,"%d",(int)percentage);
+  strcat(text_buffer,"%");
+  text_layer_set_text(layer, text_buffer);
 }
 
 void display_static_text_player(){
@@ -655,7 +365,7 @@ void display_static_text_player(){
   text_layer_set_text(s_S4_layer, "Opp");
   text_layer_set_text(s_S3_layer, "R2");
   text_layer_set_text(s_S2_layer, "R5");
-  
+
 }
 void display_static_text_complex(){
   text_layer_set_text(s_S1_layer, "S1");
@@ -664,49 +374,51 @@ void display_static_text_complex(){
   text_layer_set_text(s_S4_layer, "S4");
   text_layer_set_text(s_S3_layer, "S3");
   text_layer_set_text(s_S2_layer, "S2");
-  
+
 }
 
 void display_stat_by_complex(){
-  
+
   computeAndDisplaySetLabel();
-  
-  computeAndDisplayC1S1();
-  computeAndDisplayC1S6();
-  computeAndDisplayC1S5();
-  computeAndDisplayC1S4();
-  computeAndDisplayC1S3();
-  computeAndDisplayC1S2();
-  
-  computeAndDisplayC2S1();
-  computeAndDisplayC2S6();
-  computeAndDisplayC2S5();
-  computeAndDisplayC2S4();
-  computeAndDisplayC2S3();
-  computeAndDisplayC2S2();
-  
+
+  //Computing percentages for complex1
+  computeAndDisplayS1(0, s_C1_S1_percentage_layer, s_C1_S1_percentage_text_buffer);
+  computeAndDisplayS6(0, s_C1_S6_percentage_layer, s_C1_S6_percentage_text_buffer);
+  computeAndDisplayS5(0, s_C1_S5_percentage_layer, s_C1_S5_percentage_text_buffer);
+  computeAndDisplayS4(0, s_C1_S4_percentage_layer, s_C1_S4_percentage_text_buffer);
+  computeAndDisplayS3(0, s_C1_S3_percentage_layer, s_C1_S3_percentage_text_buffer);
+  computeAndDisplayS2(0, s_C1_S2_percentage_layer, s_C1_S2_percentage_text_buffer);
+
+  //Computing percentages for complex2
+  computeAndDisplayS1(1, s_C2_S1_percentage_layer, s_C2_S1_percentage_text_buffer);
+  computeAndDisplayS6(1, s_C2_S6_percentage_layer, s_C2_S6_percentage_text_buffer);
+  computeAndDisplayS5(1, s_C2_S5_percentage_layer, s_C2_S5_percentage_text_buffer);
+  computeAndDisplayS4(1, s_C2_S4_percentage_layer, s_C2_S4_percentage_text_buffer);
+  computeAndDisplayS3(1, s_C2_S3_percentage_layer, s_C2_S3_percentage_text_buffer);
+  computeAndDisplayS2(1, s_C2_S2_percentage_layer, s_C2_S2_percentage_text_buffer);
+
   display_static_text_complex();
-  
+
 }
 
 void display_stat_by_player(){
-  
+
   computeAndDisplaySetLabel();
-  
-  computeAndDisplayC1Setter();
-  computeAndDisplayC1R2();
-  computeAndDisplayC1R5();
-  computeAndDisplayC1opposite();
-  computeAndDisplayC1M3();
-  computeAndDisplayC1M6();
-  
-  computeAndDisplayC2Setter();
-  computeAndDisplayC2R2();
-  computeAndDisplayC2R5();
-  computeAndDisplayC2opposite();
-  computeAndDisplayC2M3();
-  computeAndDisplayC2M6();
-  
+
+  computeAndDisplaySetter(0, s_C1_S1_percentage_layer, s_C1_S1_percentage_text_buffer);
+  computeAndDisplayR2(0, s_C1_S3_percentage_layer, s_C1_S3_percentage_text_buffer);
+  computeAndDisplayR5(0, s_C1_S2_percentage_layer, s_C1_S2_percentage_text_buffer);
+  computeAndDisplayopposite(0, s_C1_S4_percentage_layer, s_C1_S4_percentage_text_buffer);
+  computeAndDisplayM3(0, s_C1_S6_percentage_layer, s_C1_S6_percentage_text_buffer);
+  computeAndDisplayM6(0, s_C1_S5_percentage_layer, s_C1_S5_percentage_text_buffer);
+
+  computeAndDisplaySetter(1, s_C2_S1_percentage_layer, s_C2_S1_percentage_text_buffer);
+  computeAndDisplayR2(1, s_C2_S3_percentage_layer, s_C2_S3_percentage_text_buffer);
+  computeAndDisplayR5(1, s_C2_S2_percentage_layer, s_C2_S2_percentage_text_buffer);
+  computeAndDisplayopposite(1, s_C2_S4_percentage_layer, s_C2_S4_percentage_text_buffer);
+  computeAndDisplayM3(1, s_C2_S6_percentage_layer, s_C2_S6_percentage_text_buffer);
+  computeAndDisplayM6(1, s_C2_S5_percentage_layer, s_C2_S5_percentage_text_buffer);
+
   display_static_text_player();
 }
 
@@ -763,384 +475,223 @@ static void stat_by_complex_short_down_click_handler(ClickRecognizerRef recogniz
 
 
 static void stat_by_complex_window_click_config_provider(void *context) {
-  
+
     ButtonId idSelect = BUTTON_ID_SELECT; //The down button
     ButtonId idBack = BUTTON_ID_BACK; //The back button
     ButtonId idUp = BUTTON_ID_UP; //The up button
     ButtonId idDown = BUTTON_ID_DOWN; //The down butt
 
-    window_single_click_subscribe(idBack,stat_by_complex_short_back_click_handler); 
+    window_single_click_subscribe(idBack,stat_by_complex_short_back_click_handler);
     window_single_click_subscribe(idSelect,stat_by_complex_short_select_click_handler);
     window_single_click_subscribe(idUp, stat_by_complex_short_up_click_handler);
     window_single_click_subscribe(idDown,stat_by_complex_short_down_click_handler);
 }
+void init_label(TextLayer *s_layer, GColor background_color, GColor text_color, GTextAlignment text_alignment, const char * font_key, const char* text, Layer *window_layer){
 
+  text_layer_set_background_color(s_layer, background_color);
+  text_layer_set_text_alignment(s_layer, text_alignment);
+  text_layer_set_font(s_layer,fonts_get_system_font(font_key));
+  text_layer_set_text_color(s_layer, text_color);
+  if(text != NULL){
+     text_layer_set_text(s_layer, text);
+  }
+  layer_add_child(window_layer, text_layer_get_layer(s_layer));
+}
 static void stat_by_complex_window_load(Window *window) {
-  
+
   //Mallocing buffers
-  s_set_label_text_buffer = malloc(sizeof(char) * 30);
-  
-  s_C1_S1_percentage_text_buffer = malloc(sizeof(char) * 30);
-  s_C1_S2_percentage_text_buffer = malloc(sizeof(char) * 30);
-  s_C1_S3_percentage_text_buffer = malloc(sizeof(char) * 30);
-  s_C1_S4_percentage_text_buffer = malloc(sizeof(char) * 30);
-  s_C1_S5_percentage_text_buffer = malloc(sizeof(char) * 30);
-  s_C1_S6_percentage_text_buffer = malloc(sizeof(char) * 30);
-  
-  s_C2_S1_percentage_text_buffer = malloc(sizeof(char) * 30);
-  s_C2_S2_percentage_text_buffer = malloc(sizeof(char) * 30);
-  s_C2_S3_percentage_text_buffer = malloc(sizeof(char) * 30);
-  s_C2_S4_percentage_text_buffer = malloc(sizeof(char) * 30);
-  s_C2_S5_percentage_text_buffer = malloc(sizeof(char) * 30); 
-  s_C2_S6_percentage_text_buffer = malloc(sizeof(char) * 30);
-  
+  s_set_label_text_buffer = malloc(sizeof(char) * 20);
+
+  s_C1_S1_percentage_text_buffer = malloc(sizeof(char) * 10);
+  s_C1_S2_percentage_text_buffer = malloc(sizeof(char) * 10);
+  s_C1_S3_percentage_text_buffer = malloc(sizeof(char) * 10);
+  s_C1_S4_percentage_text_buffer = malloc(sizeof(char) * 10);
+  s_C1_S5_percentage_text_buffer = malloc(sizeof(char) * 10);
+  s_C1_S6_percentage_text_buffer = malloc(sizeof(char) * 10);
+
+  s_C2_S1_percentage_text_buffer = malloc(sizeof(char) * 10);
+  s_C2_S2_percentage_text_buffer = malloc(sizeof(char) * 10);
+  s_C2_S3_percentage_text_buffer = malloc(sizeof(char) * 10);
+  s_C2_S4_percentage_text_buffer = malloc(sizeof(char) * 10);
+  s_C2_S5_percentage_text_buffer = malloc(sizeof(char) * 10);
+  s_C2_S6_percentage_text_buffer = malloc(sizeof(char) * 10);
+
   // Get information about the Window
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
-  
+
   /*
     UP PART OF THE SCREEN
   */
-  
-  
-  //Creating the set label text Layer 
-  s_set_label_layer = text_layer_create(
-  GRect(0, 0 , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_set_label_layer, GColorClear);
-  text_layer_set_text_color(s_set_label_layer, GColorLiberty);
-  computeAndDisplaySetLabel();
-  text_layer_set_text_alignment(s_set_label_layer, GTextAlignmentCenter);
-  text_layer_set_font(s_set_label_layer,fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_set_label_layer));
-  
-  //Creating the C1 up text Layer 
-  s_C1_up_layer = text_layer_create(
-  GRect(0, 3*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C1_up_layer, GColorClear);
-  text_layer_set_text_color(s_C1_up_layer, GColorBlack);
-  text_layer_set_text(s_C1_up_layer, "C1");
-  text_layer_set_text_alignment(s_C1_up_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C1_up_layer,fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C1_up_layer));
-  
-    //Creating the C2 up text Layer 
-  s_C2_up_layer = text_layer_create(
-  GRect(0, 4*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C2_up_layer, GColorClear);
-  text_layer_set_text_color(s_C2_up_layer, GColorBlack);
-  text_layer_set_text(s_C2_up_layer, "C2");
-  text_layer_set_text_alignment(s_C2_up_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C2_up_layer,fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C2_up_layer));
-  
-  //Creating the S1 text Layer 
-  s_S1_layer = text_layer_create(
-  GRect(bounds.size.w/4,(bounds.size.h/10), bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_S1_layer, GColorClear);
-  text_layer_set_text_color(s_S1_layer, GColorBlack);
-  text_layer_set_text(s_S1_layer, "S1");
-  text_layer_set_text_alignment(s_S1_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_S1_layer,fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_S1_layer));
-  
-  //Creating the S6 text Layer 
-  s_S6_layer = text_layer_create(
-  GRect(2*(bounds.size.w/4), (bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_S6_layer, GColorClear);
-  text_layer_set_text_color(s_S6_layer, GColorBlack);
-  text_layer_set_text(s_S6_layer, "S6");
-  text_layer_set_text_alignment(s_S6_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_S6_layer,fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_S6_layer));
-  
-  //Creating the S5 text Layer 
-  s_S5_layer = text_layer_create(
-  GRect(3*(bounds.size.w/4), (bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_S5_layer, GColorClear);
-  text_layer_set_text_color(s_S5_layer, GColorBlack);
-  text_layer_set_text(s_S5_layer, "S5");
-  text_layer_set_text_alignment(s_S5_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_S5_layer,fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_S5_layer));
-  
-  //Creating the C1_S1 percentage text Layer 
-  s_C1_S1_percentage_layer = text_layer_create(
-  GRect(bounds.size.w/4, 3*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C1_S1_percentage_layer, GColorClear);
-  computeAndDisplayC1S1();
-  text_layer_set_text_alignment(s_C1_S1_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C1_S1_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C1_S1_percentage_layer));
-  
-  //Creating the C2_S1 percentage text Layer 
-  s_C2_S1_percentage_layer = text_layer_create(
-  GRect(bounds.size.w/4, 4*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C2_S1_percentage_layer, GColorClear);
-  computeAndDisplayC2S1();
-  text_layer_set_text_alignment(s_C2_S1_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C2_S1_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C2_S1_percentage_layer));
-  
-  //Creating the C1_S6 percentage text Layer 
-  s_C1_S6_percentage_layer = text_layer_create(
-  GRect(2*(bounds.size.w/4), 3*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C1_S6_percentage_layer, GColorClear);
-  computeAndDisplayC1S6();
-  text_layer_set_text_alignment(s_C1_S6_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C1_S6_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C1_S6_percentage_layer));
-  
-    //Creating the C2_S6 percentage text Layer 
-  s_C2_S6_percentage_layer = text_layer_create(
-  GRect(2*(bounds.size.w/4), 4*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C2_S6_percentage_layer, GColorClear);
-  computeAndDisplayC2S6();
-  text_layer_set_text_alignment(s_C2_S6_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C2_S6_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C2_S6_percentage_layer));
-  
-  
-  //Creating the C1_S5 percentage text Layer 
-  s_C1_S5_percentage_layer = text_layer_create(
-  GRect(3*(bounds.size.w/4), 3*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C1_S5_percentage_layer, GColorClear);
-  computeAndDisplayC1S5();
-  text_layer_set_text_alignment(s_C1_S5_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C1_S5_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C1_S5_percentage_layer));
-  
-  //Creating the C2_S5 percentage text Layer 
-  s_C2_S5_percentage_layer = text_layer_create(
-  GRect(3*(bounds.size.w/4), 4*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C2_S5_percentage_layer, GColorClear);
-  computeAndDisplayC2S5();
-  text_layer_set_text_alignment(s_C2_S5_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C2_S5_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C2_S5_percentage_layer));
-  
+
+
+  //Creating the set label text Layer
+  s_set_label_layer = text_layer_create(GRect(0,PBL_IF_ROUND_ELSE((bounds.size.h/10) ,0) , bounds.size.w, bounds.size.h));
+  init_label(s_set_label_layer, GColorClear, GColorLiberty, GTextAlignmentCenter, FONT_KEY_GOTHIC_18_BOLD, NULL, window_layer);
+
+  //Creating the C1 up text Layer
+  s_C1_up_layer = text_layer_create(GRect(PBL_IF_ROUND_ELSE((bounds.size.w/10),0), 3*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C1_up_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_18_BOLD, "C1", window_layer);
+
+  //Creating the C2 up text Layer
+  s_C2_up_layer = text_layer_create(GRect(PBL_IF_ROUND_ELSE((bounds.size.w/10),0), 4*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C2_up_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_18_BOLD, "C2", window_layer);
+
+  //Creating the S1 text Layer
+  s_S1_layer = text_layer_create(GRect(bounds.size.w/4,PBL_IF_ROUND_ELSE(2*(bounds.size.h/10),(bounds.size.h/10)), bounds.size.w, bounds.size.h));
+  init_label(s_S1_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_18_BOLD, NULL, window_layer);
+
+  //Creating the S6 text Layer
+  s_S6_layer = text_layer_create(GRect(2*(bounds.size.w/4), PBL_IF_ROUND_ELSE(2*(bounds.size.h/10),(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
+  init_label(s_S6_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_18_BOLD, NULL, window_layer);
+
+  //Creating the S5 text Layer
+  s_S5_layer = text_layer_create(GRect(3*(bounds.size.w/4), PBL_IF_ROUND_ELSE(2*(bounds.size.h/10),(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
+  init_label(s_S5_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_18_BOLD, NULL, window_layer);
+
+  //Creating the C1_S1 percentage text Layer
+  s_C1_S1_percentage_layer = text_layer_create(GRect(bounds.size.w/4, 3*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C1_S1_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
+
+  //Creating the C2_S1 percentage text Layer
+  s_C2_S1_percentage_layer = text_layer_create(GRect(bounds.size.w/4, 4*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C2_S1_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
+
+  //Creating the C1_S6 percentage text Layer
+  s_C1_S6_percentage_layer = text_layer_create(GRect(2*(bounds.size.w/4), 3*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C1_S6_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
+
+  //Creating the C2_S6 percentage text Layer
+  s_C2_S6_percentage_layer = text_layer_create(GRect(2*(bounds.size.w/4), 4*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C2_S6_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
+
+  //Creating the C1_S5 percentage text Layer
+  s_C1_S5_percentage_layer = text_layer_create(GRect(3*(bounds.size.w/4), 3*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C1_S5_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
+
+  //Creating the C2_S5 percentage text Layer
+  s_C2_S5_percentage_layer = text_layer_create(GRect(3*(bounds.size.w/4), 4*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C2_S5_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
+
   /*
     DOWN PART OF THE SCREEN
   */
-  
-  //Creating the C1 down text Layer 
-  s_C1_down_layer = text_layer_create(
-  GRect(0, 8*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C1_down_layer, GColorClear);
-  text_layer_set_text_color(s_C1_down_layer, GColorBlack);
-  text_layer_set_text(s_C1_down_layer, "C1");
-  text_layer_set_text_alignment(s_C1_down_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C1_down_layer,fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C1_down_layer));
-  
-    //Creating the C2 down text Layer 
-  s_C2_down_layer = text_layer_create(
-  GRect(0, 9*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C2_down_layer, GColorClear);
-  text_layer_set_text_color(s_C2_down_layer, GColorBlack);
-  text_layer_set_text(s_C2_down_layer, "C2");
-  text_layer_set_text_alignment(s_C2_down_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C2_down_layer,fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C2_down_layer));
-  
-  //Creating the S4 text Layer 
-  s_S4_layer = text_layer_create(
-  GRect(bounds.size.w/4, 6*(bounds.size.h/10), bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_S4_layer, GColorClear);
-  text_layer_set_text_color(s_S4_layer, GColorBlack);
-  text_layer_set_text(s_S4_layer, "S4");
-  text_layer_set_text_alignment(s_S4_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_S4_layer,fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_S4_layer));
-  
-  //Creating the S3 text Layer 
-  s_S3_layer = text_layer_create(
-  GRect(2*(bounds.size.w/4), 6*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_S3_layer, GColorClear);
-  text_layer_set_text_color(s_S3_layer, GColorBlack);
-  text_layer_set_text(s_S3_layer, "S3");
-  text_layer_set_text_alignment(s_S3_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_S3_layer,fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_S3_layer));
-  
-  //Creating the S2 text Layer 
-  s_S2_layer = text_layer_create(
-  GRect(3*(bounds.size.w/4), 6*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_S2_layer, GColorClear);
-  text_layer_set_text_color(s_S2_layer, GColorBlack);
-  text_layer_set_text(s_S2_layer, "S2");
-  text_layer_set_text_alignment(s_S2_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_S2_layer,fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_S2_layer));
-  
-    //Creating the C1_S4 percentage text Layer 
-  s_C1_S4_percentage_layer = text_layer_create(
-  GRect(bounds.size.w/4, 8*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C1_S4_percentage_layer, GColorClear);
-  computeAndDisplayC1S4();
-  text_layer_set_text_alignment(s_C1_S4_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C1_S4_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C1_S4_percentage_layer));
-  
-  //Creating the C2_S4 percentage text Layer 
-  s_C2_S4_percentage_layer = text_layer_create(
-  GRect(bounds.size.w/4, 9*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C2_S4_percentage_layer, GColorClear);
-  computeAndDisplayC2S4();
-  text_layer_set_text_alignment(s_C2_S4_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C2_S4_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C2_S4_percentage_layer));
-  
-  //Creating the C1_S3 percentage text Layer 
-  s_C1_S3_percentage_layer = text_layer_create(
-  GRect(2*(bounds.size.w/4), 8*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C1_S3_percentage_layer, GColorClear);
-  computeAndDisplayC1S3();
-  text_layer_set_text_alignment(s_C1_S3_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C1_S3_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C1_S3_percentage_layer));
-  
-    //Creating the C2_S3 percentage text Layer 
-  s_C2_S3_percentage_layer = text_layer_create(
-  GRect(2*(bounds.size.w/4), 9*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C2_S3_percentage_layer, GColorClear);
-  computeAndDisplayC2S3();
-  text_layer_set_text_alignment(s_C2_S3_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C2_S3_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C2_S3_percentage_layer));
-  
-  
-  //Creating the C1_S2 percentage text Layer 
-  s_C1_S2_percentage_layer = text_layer_create(
-  GRect(3*(bounds.size.w/4), 8*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C1_S2_percentage_layer, GColorClear);
-  computeAndDisplayC1S2();
-  text_layer_set_text_alignment(s_C1_S2_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C1_S2_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C1_S2_percentage_layer));
-  
-  //Creating the C2_S2 percentage text Layer 
-  s_C2_S2_percentage_layer = text_layer_create(
-  GRect(3*(bounds.size.w/4), 9*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C2_S2_percentage_layer, GColorClear);
-  computeAndDisplayC2S2();
-  text_layer_set_text_alignment(s_C2_S2_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C2_S2_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C2_S2_percentage_layer));
-  
+
+  //Creating the C1 down text Layer
+  s_C1_down_layer = text_layer_create(GRect(PBL_IF_ROUND_ELSE((bounds.size.w/10),0), PBL_IF_ROUND_ELSE(6*(bounds.size.h/10),8*(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
+  init_label(s_C1_down_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_18_BOLD, "C1", window_layer);
+
+  //Creating the C2 down text Layer
+  s_C2_down_layer = text_layer_create(GRect(PBL_IF_ROUND_ELSE((bounds.size.w/10),0), PBL_IF_ROUND_ELSE(7*(bounds.size.h/10),9*(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
+  init_label(s_C2_down_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_18_BOLD, "C2", window_layer);
+
+  //Creating the S4 text Layer
+  s_S4_layer = text_layer_create(GRect(bounds.size.w/4, PBL_IF_ROUND_ELSE(5*(bounds.size.h/10),6*(bounds.size.h/10)), bounds.size.w, bounds.size.h));
+  init_label(s_S4_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_18_BOLD, NULL, window_layer);
+
+  //Creating the S3 text Layer
+  s_S3_layer = text_layer_create(GRect(2*(bounds.size.w/4), PBL_IF_ROUND_ELSE(5*(bounds.size.h/10),6*(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
+  init_label(s_S3_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_18_BOLD, NULL, window_layer);
+
+  //Creating the S2 text Layer
+  s_S2_layer = text_layer_create(GRect(3*(bounds.size.w/4), PBL_IF_ROUND_ELSE(5*(bounds.size.h/10),6*(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
+  init_label(s_S2_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_18_BOLD, NULL, window_layer);
+
+  //Creating the C1_S4 percentage text Layer
+  s_C1_S4_percentage_layer = text_layer_create(GRect(bounds.size.w/4, PBL_IF_ROUND_ELSE(6*(bounds.size.h/10),8*(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
+  init_label(s_C1_S4_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
+
+  //Creating the C2_S4 percentage text Layer
+  s_C2_S4_percentage_layer = text_layer_create(GRect(bounds.size.w/4, PBL_IF_ROUND_ELSE(7*(bounds.size.h/10),9*(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
+  init_label(s_C2_S4_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
+
+  //Creating the C1_S3 percentage text Layer
+  s_C1_S3_percentage_layer = text_layer_create( GRect(2*(bounds.size.w/4), PBL_IF_ROUND_ELSE(6*(bounds.size.h/10),8*(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
+  init_label(s_C1_S3_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
+
+  //Creating the C2_S3 percentage text Layer
+  s_C2_S3_percentage_layer = text_layer_create( GRect(2*(bounds.size.w/4), PBL_IF_ROUND_ELSE(7*(bounds.size.h/10),9*(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
+  init_label(s_C2_S3_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
+
+  //Creating the C1_S2 percentage text Layer
+  s_C1_S2_percentage_layer = text_layer_create(GRect(3*(bounds.size.w/4),PBL_IF_ROUND_ELSE(6*(bounds.size.h/10),8*(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
+  init_label(s_C1_S2_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
+
+  //Creating the C2_S2 percentage text Layer
+  s_C2_S2_percentage_layer = text_layer_create(GRect(3*(bounds.size.w/4), PBL_IF_ROUND_ELSE(7*(bounds.size.h/10),9*(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
+  init_label(s_C2_S2_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
+
+  //Displaying all label text
+  display_stat_by_complex();
+
 }
 
 static void stat_by_complex_window_unload(Window *window){
-  
+
   text_layer_destroy(s_set_label_layer);
-  
+
   text_layer_destroy(s_C1_up_layer);
   text_layer_destroy(s_C2_up_layer);
-  
+
   text_layer_destroy(s_C1_down_layer);
   text_layer_destroy(s_C2_down_layer);
-  
+
   text_layer_destroy(s_S1_layer);
   text_layer_destroy(s_S2_layer);
   text_layer_destroy(s_S3_layer);
   text_layer_destroy(s_S4_layer);
   text_layer_destroy(s_S5_layer);
   text_layer_destroy(s_S6_layer);
-  
+
   text_layer_destroy(s_C1_S1_percentage_layer);
   text_layer_destroy(s_C1_S2_percentage_layer);
   text_layer_destroy(s_C1_S3_percentage_layer);
   text_layer_destroy(s_C1_S4_percentage_layer);
   text_layer_destroy(s_C1_S5_percentage_layer);
   text_layer_destroy(s_C1_S6_percentage_layer);
-  
+
   text_layer_destroy(s_C2_S1_percentage_layer);
   text_layer_destroy(s_C2_S2_percentage_layer);
   text_layer_destroy(s_C2_S3_percentage_layer);
   text_layer_destroy(s_C2_S4_percentage_layer);
   text_layer_destroy(s_C2_S5_percentage_layer);
   text_layer_destroy(s_C2_S6_percentage_layer);
-  
+
   free(s_set_label_text_buffer);
-  
+
   free(s_C1_S1_percentage_text_buffer);
   free(s_C1_S2_percentage_text_buffer);
   free(s_C1_S3_percentage_text_buffer);
   free(s_C1_S4_percentage_text_buffer);
   free(s_C1_S5_percentage_text_buffer);
   free(s_C1_S6_percentage_text_buffer);
-  
+
   free(s_C2_S1_percentage_text_buffer);
   free(s_C2_S2_percentage_text_buffer);
   free(s_C2_S3_percentage_text_buffer);
   free(s_C2_S4_percentage_text_buffer);
   free(s_C2_S5_percentage_text_buffer);
   free(s_C2_S6_percentage_text_buffer);
-  
+
 }
 
 void initialize_stat_by_complex_window(int setNumberIn,int previousWindow){
   //Recording what the previous window was so that we can push that window back
   //on top of the stack when we are done checking the stats
   previousWindowIsGameWindow = previousWindow;
-  
+
   //Recording the set number of the stats we want
   setNumber = setNumberIn;
   //Creating window
   g_stat_by_complex_window = window_create();
-  
+
   //Setting the click handler
   window_set_click_config_provider(g_stat_by_complex_window, stat_by_complex_window_click_config_provider);
-  
+
   // Set handlers to manage the elements inside the Window
   window_set_window_handlers(g_stat_by_complex_window, (WindowHandlers) {
     .load = stat_by_complex_window_load,
     .unload = stat_by_complex_window_unload
   });
-  
+
 }
