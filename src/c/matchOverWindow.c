@@ -5,7 +5,7 @@
 #include "statByComplexWindow.h"
 
 #define NUM_MENU_SECTIONS 1
-#define NUM_FIRST_MENU_ITEMS 3
+#define NUM_FIRST_MENU_ITEMS 4
 #include "T3Window.h"
 
 
@@ -16,9 +16,9 @@ static T3Window * myT3Window;
 const char * keyboardSet1[] = {T3_LAYOUT_LOWERCASE, T3_LAYOUT_UPPERCASE};
 const char * keyboardSet2[] = {T3_LAYOUT_NUMBERS};
 const char * keyboardSet3[] = {T3_LAYOUT_PUNC, T3_LAYOUT_BRACKETS};
-char* email = "";
 
-void sendStats(const char* text){
+char buffer[30];
+void sendStats(){
   // Create dictionary
   DictionaryIterator *iter;
   
@@ -41,13 +41,15 @@ void sendStats(const char* text){
     }
   }
   free(current_stat_buffer);
-  dict_write_cstring(iter,130,text);
+  persist_read_string(0, buffer, sizeof(buffer));
+  dict_write_cstring(iter,130,buffer);
   // Send the message!
   app_message_outbox_send();
 }
 void myCloseHandler(const char * text) {
     t3window_destroy(myT3Window);
-    sendStats(text);
+    persist_write_string(0, text);
+    //sendStats(text);
 }
 void displayKeyboard(){
   myT3Window = t3window_create(
@@ -77,12 +79,16 @@ static void menu_draw_header_callback(GContext* ctx, const Layer *cell_layer, ui
 static void menu_draw_row_callback(GContext* ctx, const Layer *cell_layer, MenuIndex *cell_index, void *data) {
   switch (cell_index->row) {
         case 0:
-          menu_cell_basic_draw(ctx, cell_layer, "Send Data", "Send data and exit", NULL);
+          persist_read_string(0, buffer, sizeof(buffer));
+          menu_cell_basic_draw(ctx, cell_layer, "Send data", buffer, NULL);
           break;
         case 1:
-          menu_cell_basic_draw(ctx, cell_layer, "Analyse data", "Have a look at game data", NULL);
+          menu_cell_basic_draw(ctx, cell_layer, "Enter email adress", "Set email address", NULL);
           break;
         case 2:
+          menu_cell_basic_draw(ctx, cell_layer, "Analyse data", "Have a look at game data", NULL);
+          break;
+        case 3:
           menu_cell_basic_draw(ctx, cell_layer, "Exit app", "", NULL);
           break;
       }
@@ -91,14 +97,17 @@ static void menu_draw_row_callback(GContext* ctx, const Layer *cell_layer, MenuI
 static void menu_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {
   switch (cell_index->row) {
         case 0:
-          displayKeyboard();
+          sendStats();
           break;
         case 1:
+          displayKeyboard();
+          break;
+        case 2:
           initialize_stat_by_complex_window(0,0);
           window_stack_push(g_stat_by_complex_window, true);
           window_destroy(g_game_window);
           break;
-        case 2:
+        case 3:
           window_stack_pop_all(true);
           window_destroy(g_match_over_window);
       }

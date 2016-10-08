@@ -34,33 +34,14 @@ static void initAllWindows() {
   
   //Initilizing historic stack
   initializeHistoricStack();
+  
   //Initializing setterAndComplexChoiceWindow
   initialize_setter_and_complex_choice_window();
-  
-  //Initializing game window
-  //initialize_game_window();
-  
-  //Initializing SetOverWindow
-  //initialize_set_over_window();
-  
-  //Initializing MatchOverWindow
-  //initialize_match_over_window();
-  
-  //Initializing StatByComplex
-  //initialize_stat_by_complex_window();
-  
-  //Initializing StatByPlayer
-  //initialize_stat_by_player_window();
-  
-  // Show the Window on the watch, with animated=true
-  //window_stack_push(g_game_window, true);
+
   window_stack_push(g_setter_and_complex_choice_window, true);
-  //window_stack_push(g_set_over_window, true);
-  //window_stack_push(g_stat_by_complex_window, true);
-  //window_stack_push(g_stat_by_player_window, true);
-  //window_stack_push(g_match_over_window, true);
+
   
-    // Open AppMessage
+  // Open AppMessage
   app_message_open(100, 1400);
 }
 
@@ -68,13 +49,6 @@ static void deinit(void) {
   //Destroy the historic
   deinitializeHistoricStack();
 	
-	// Destroy all the windows
-	//window_destroy(g_setter_and_complex_choice_window);
-  //window_destroy(g_game_window);
-  //window_destroy(g_set_over_window);
-  //window_destroy(g_match_over_window);
-  //window_destroy(g_stat_by_complex_window);
-  //window_destroy(g_stat_by_player_window);
 }
 
 int main(void) {
