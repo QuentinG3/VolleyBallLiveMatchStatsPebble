@@ -1,6 +1,5 @@
 #include <pebble.h>
 #include "matchOverWindow.h"
-#include "windows.h"
 #include "data.h"
 #include "statByComplexWindow.h"
 
@@ -9,7 +8,7 @@
 #include "T3Window.h"
 
 
-
+static Window *g_match_over_window;
 static MenuLayer *s_menu_layer;
 static T3Window * myT3Window;
   
@@ -49,7 +48,6 @@ void sendStats(){
 void myCloseHandler(const char * text) {
     t3window_destroy(myT3Window);
     persist_write_string(0, text);
-    //sendStats(text);
 }
 void displayKeyboard(){
   myT3Window = t3window_create(
@@ -103,13 +101,11 @@ static void menu_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, v
           displayKeyboard();
           break;
         case 2:
+          window_stack_pop(true);
           initialize_stat_by_complex_window(0,0);
-          window_stack_push(g_stat_by_complex_window, true);
-          window_destroy(g_game_window);
           break;
         case 3:
           window_stack_pop_all(true);
-          window_destroy(g_match_over_window);
       }
   
 }
@@ -152,6 +148,7 @@ static void match_over_load(Window *window) {
 
 static void match_over_unload(Window *window){
   menu_layer_destroy(s_menu_layer);
+  window_destroy(g_match_over_window);
 }
 
 void initialize_match_over_window(){
@@ -167,5 +164,7 @@ void initialize_match_over_window(){
     .load = match_over_load,
     .unload = match_over_unload
   });
+  
+  window_stack_push(g_match_over_window,true);
   
 }

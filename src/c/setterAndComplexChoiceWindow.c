@@ -1,13 +1,12 @@
 #include <pebble.h>
 #include "setterAndComplexChoiceWindow.h"
-#include "windows.h"
 #include "data.h"
 #include "gameWindow.h"
 
 #define NUM_MENU_SECTIONS 1
 #define NUM_FIRST_MENU_ITEMS 3
 
-
+static Window *g_setter_and_complex_choice_window;
 static MenuLayer *s_menu_layer;
 
 char* currentSetNumberBuffer;
@@ -52,10 +51,9 @@ static void menu_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, v
           next_complex();
           menu_layer_reload_data(s_menu_layer);
           break;
-        case 2: 
+        case 2:
+          window_stack_pop(true);
           initialize_game_window();
-          window_stack_push(g_game_window, true);
-          window_destroy(g_setter_and_complex_choice_window);
           break;
       }
   
@@ -93,6 +91,7 @@ static void setter_and_complex_choice_window_unload(Window *window){
   
   free(currentSetNumberBuffer);
   menu_layer_destroy(s_menu_layer);
+  window_destroy(g_setter_and_complex_choice_window);
   
 }
 
@@ -107,5 +106,6 @@ void initialize_setter_and_complex_choice_window(){
     .unload = setter_and_complex_choice_window_unload
   });
   
+  window_stack_push(g_setter_and_complex_choice_window, true);
 }
 

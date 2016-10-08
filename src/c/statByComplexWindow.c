@@ -1,6 +1,5 @@
 #include <pebble.h>
 #include "statByComplexWindow.h"
-#include "windows.h"
 #include "data.h"
 #include "gameWindow.h"
 #include "matchOverWindow.h"
@@ -8,7 +7,7 @@
 int previousWindowIsGameWindow;
 int displayComplex = 1;
 int setNumber;
-
+static Window *g_stat_by_complex_window;
 static TextLayer *s_set_label_layer;
 
 static TextLayer *s_C1_up_layer;
@@ -424,14 +423,12 @@ void display_stat_by_player(){
 
 static void stat_by_complex_short_back_click_handler(ClickRecognizerRef recognizer, void *context) {
   if(previousWindowIsGameWindow){
+    window_stack_pop(true);
     initialize_game_window();
-    window_stack_push(g_game_window, true);
-    window_destroy(g_stat_by_complex_window);
   }
   else{
+    window_stack_pop(true);
     initialize_match_over_window();
-    window_stack_push(g_match_over_window, true);
-    window_destroy(g_stat_by_complex_window);
   }
 }
 static void stat_by_complex_short_select_click_handler(ClickRecognizerRef recognizer, void *context) {
@@ -672,6 +669,8 @@ static void stat_by_complex_window_unload(Window *window){
   free(s_C2_S4_percentage_text_buffer);
   free(s_C2_S5_percentage_text_buffer);
   free(s_C2_S6_percentage_text_buffer);
+  
+  window_destroy(g_stat_by_complex_window);
 
 }
 
@@ -693,5 +692,7 @@ void initialize_stat_by_complex_window(int setNumberIn,int previousWindow){
     .load = stat_by_complex_window_load,
     .unload = stat_by_complex_window_unload
   });
+  
+  window_stack_push(g_stat_by_complex_window, true);
 
 }

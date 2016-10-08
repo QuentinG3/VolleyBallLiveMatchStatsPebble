@@ -1,6 +1,5 @@
 #include <pebble.h>
 #include "setOverWindow.h"
-#include "windows.h"
 #include "data.h"
 #include "gameWindow.h"
 #include "setterAndComplexChoiceWindow.h"
@@ -9,7 +8,7 @@
 #define NUM_MENU_SECTIONS 1
 #define NUM_FIRST_MENU_ITEMS 2
 
-
+static Window *g_set_over_window;
 static MenuLayer *s_menu_layer;
 
 static uint16_t menu_get_num_sections_callback(MenuLayer *menu_layer, void *data) {
@@ -44,22 +43,20 @@ static void menu_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, v
         case 0:
           gotoNextSet();
           if(matchOver()){
+            window_stack_pop(true);
             initialize_match_over_window();
-            window_stack_push(g_match_over_window,true);
-            window_destroy(g_set_over_window);
+            
           }
           else{
+            window_stack_pop(true);
             initialize_setter_and_complex_choice_window();
-            window_stack_push(g_setter_and_complex_choice_window, true);
-            window_destroy(g_set_over_window);
           }
           break;
         case 1:
           undoLastAction();
-    
+        
+          window_stack_pop(true);
           initialize_game_window();
-          window_stack_push(g_game_window, true);
-          window_destroy(g_set_over_window);
           break;
       }
   
@@ -104,6 +101,7 @@ static void set_over_load(Window *window) {
 
 static void set_over_unload(Window *window){
   menu_layer_destroy(s_menu_layer);
+  window_destroy(g_set_over_window);
 }
 
 void initialize_set_over_window(){
@@ -119,5 +117,7 @@ void initialize_set_over_window(){
     .load = set_over_load,
     .unload = set_over_unload
   });
+  
+  window_stack_push(g_set_over_window, true);
   
 }

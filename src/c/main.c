@@ -2,11 +2,7 @@
 #include "data.h"
 #include "setterAndComplexChoiceWindow.h"
 #include "gameWindow.h"
-#include "windows.h"
 #include "stack.h"
-#include "setOverWindow.h"
-#include "matchOverWindow.h"
-#include "statByComplexWindow.h"
 
 //Declaration of some necessary methods for communication with AppMessage(Allow us to send message to the server)
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
@@ -37,8 +33,6 @@ static void initAllWindows() {
   
   //Initializing setterAndComplexChoiceWindow
   initialize_setter_and_complex_choice_window();
-
-  window_stack_push(g_setter_and_complex_choice_window, true);
 
   
   // Open AppMessage

@@ -1,6 +1,5 @@
 #include <pebble.h>
 #include "gameWindow.h"
-#include "windows.h"
 #include "data.h"
 #include "setterAndComplexChoiceWindow.h"
 #include "setOverWindow.h"
@@ -9,7 +8,7 @@
 #define NUM_SETTER_POSITION 6
 #define NUM_COMPLEX 2
 #define NUM_MAX_SET 5
-
+static Window *g_game_window;
 static TextLayer *s_setter_layer;
 
 static TextLayer *s_C1_layer;
@@ -161,9 +160,8 @@ void updateUI(){
 }
 
 static void game_window_short_select_click_handler(ClickRecognizerRef recognizer, void *context) {
+  window_stack_pop(true);
   initialize_stat_by_complex_window(currentSetIndex,1);
-  window_stack_push(g_stat_by_complex_window, true);
-  window_destroy(g_game_window);
 }
 
 static void game_window_short_up_click_handler(ClickRecognizerRef recognizer, void *context) {
@@ -186,9 +184,8 @@ static void game_window_short_up_click_handler(ClickRecognizerRef recognizer, vo
   
   //We check if the set is over. If it is we ask the user if the set is really over by asking him with the next window.
   if(setIsFinished(currentSetIndex)){
+    window_stack_pop(true);
     initialize_set_over_window();
-    window_stack_push(g_set_over_window, true);
-    window_destroy(g_game_window);
   }
 }
 
@@ -210,9 +207,8 @@ static void game_window_short_down_click_handler(ClickRecognizerRef recognizer, 
   
     //We check if the set is over. If it is we ask the user if the set is really over by asking him with the next window.
   if(setIsFinished(currentSetIndex)){
+    window_stack_pop(true);
     initialize_set_over_window();
-    window_stack_push(g_set_over_window, true);
-    window_destroy(g_game_window);
   }
 }
 
@@ -224,23 +220,19 @@ static void game_window_long_up_click_handler(ClickRecognizerRef recognizer, voi
     updateUI();
 }
 static void game_window_short_back_click_handler(ClickRecognizerRef recognizer, void *context) {
+    window_stack_pop(true);
     initialize_setter_and_complex_choice_window();
-    window_stack_push(g_setter_and_complex_choice_window, true);
-    window_destroy(g_game_window);
 }
 static void game_window_long_down_click_handler(ClickRecognizerRef recognizer, void *context) {
+  window_stack_pop(true);
   initialize_stat_by_complex_window(5,1);
-  window_stack_push(g_stat_by_complex_window, true);
-  window_destroy(g_game_window);
 }
 static void game_window_long_select_click_handler(ClickRecognizerRef recognizer, void *context) {
   //Reset the data
   reinitializeData();
 
-
+  window_stack_pop(true);
   initialize_setter_and_complex_choice_window();
-  window_stack_push(g_setter_and_complex_choice_window, true);
-  window_destroy(g_game_window);
 }
 
 static void game_window_click_config_provider(void *context) {
@@ -431,6 +423,8 @@ static void game_window_unload(Window *window){
     free(C1_percentage_text_buffer);
     free(C2_percentage_text_buffer);
     free(C1_And_C2_percentage_text_buffer);
+  
+    window_destroy(g_game_window);
 }
 
 void initialize_game_window(){
@@ -446,4 +440,5 @@ void initialize_game_window(){
     .unload = game_window_unload
   });
   
+  window_stack_push(g_game_window, true);
 }
