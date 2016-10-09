@@ -1,3 +1,7 @@
+/*
+Author : Quentin Gusbin
+Date : 10/09/2016
+*/
 #include <pebble.h>
 #include "statByComplexWindow.h"
 #include "data.h"
@@ -65,7 +69,7 @@ void computeAndDisplaySetLabel(){
 
 }
 
-void computeAndDisplayS1(int complex,TextLayer *layer, char* text_buffer){
+void computeAndDisplayS1(int complex,TextLayer *layer, char* text_buffer,int threshold){
   //Computing percentage
   double numerator = (double)dataVariable[setNumber][0][complex][0];
   double denominator = numerator + (double)dataVariable[setNumber][0][complex][1];
@@ -77,7 +81,7 @@ void computeAndDisplayS1(int complex,TextLayer *layer, char* text_buffer){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 60){
+  if(percentage < threshold){
     text_layer_set_text_color(layer, GColorRed);
   }
   else{
@@ -90,7 +94,7 @@ void computeAndDisplayS1(int complex,TextLayer *layer, char* text_buffer){
   text_layer_set_text(layer,text_buffer);
 
 }
-void computeAndDisplayS6(int complex,TextLayer *layer, char* text_buffer){
+void computeAndDisplayS6(int complex,TextLayer *layer, char* text_buffer,int threshold){
   //Computing percentage
   double numerator = (double)dataVariable[setNumber][5][complex][0];
   double denominator = numerator + (double)dataVariable[setNumber][5][complex][1];
@@ -102,7 +106,7 @@ void computeAndDisplayS6(int complex,TextLayer *layer, char* text_buffer){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 60){
+  if(percentage < threshold){
     text_layer_set_text_color(layer, GColorRed);
   }
   else{
@@ -114,7 +118,7 @@ void computeAndDisplayS6(int complex,TextLayer *layer, char* text_buffer){
   strcat(text_buffer,"%");
   text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayS5(int complex,TextLayer *layer, char* text_buffer){
+void computeAndDisplayS5(int complex,TextLayer *layer, char* text_buffer,int threshold){
   //Computing percentage
   double numerator = (double)dataVariable[setNumber][4][complex][0];
   double denominator = numerator + (double)dataVariable[setNumber][4][complex][1];
@@ -126,7 +130,7 @@ void computeAndDisplayS5(int complex,TextLayer *layer, char* text_buffer){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 60){
+  if(percentage < threshold){
     text_layer_set_text_color(layer, GColorRed);
   }
   else{
@@ -138,7 +142,7 @@ void computeAndDisplayS5(int complex,TextLayer *layer, char* text_buffer){
   strcat(text_buffer,"%");
   text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayS4(int complex,TextLayer *layer, char* text_buffer){
+void computeAndDisplayS4(int complex,TextLayer *layer, char* text_buffer,int threshold){
   //Computing percentage
   double numerator = (double)dataVariable[setNumber][3][complex][0];
   double denominator = numerator + (double)dataVariable[setNumber][3][complex][1];
@@ -150,7 +154,7 @@ void computeAndDisplayS4(int complex,TextLayer *layer, char* text_buffer){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 60){
+  if(percentage < threshold){
     text_layer_set_text_color(layer, GColorRed);
   }
   else{
@@ -162,7 +166,7 @@ void computeAndDisplayS4(int complex,TextLayer *layer, char* text_buffer){
   strcat(text_buffer,"%");
   text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayS3(int complex,TextLayer *layer, char* text_buffer){
+void computeAndDisplayS3(int complex,TextLayer *layer, char* text_buffer,int threshold){
   //Computing percentage
   double numerator = (double)dataVariable[setNumber][2][complex][0];
   double denominator = numerator + (double)dataVariable[setNumber][2][complex][1];
@@ -174,7 +178,7 @@ void computeAndDisplayS3(int complex,TextLayer *layer, char* text_buffer){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 60){
+  if(percentage < threshold){
     text_layer_set_text_color(layer, GColorRed);
   }
   else{
@@ -186,7 +190,7 @@ void computeAndDisplayS3(int complex,TextLayer *layer, char* text_buffer){
   strcat(text_buffer,"%");
   text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayS2(int complex,TextLayer *layer, char* text_buffer){
+void computeAndDisplayS2(int complex,TextLayer *layer, char* text_buffer,int threshold){
   //Computing percentage
   double numerator = (double)dataVariable[setNumber][1][complex][0];
   double denominator = numerator + (double)dataVariable[setNumber][1][complex][1];
@@ -198,7 +202,7 @@ void computeAndDisplayS2(int complex,TextLayer *layer, char* text_buffer){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 60){
+  if(percentage < threshold){
     text_layer_set_text_color(layer, GColorRed);
   }
   else{
@@ -211,7 +215,7 @@ void computeAndDisplayS2(int complex,TextLayer *layer, char* text_buffer){
   text_layer_set_text(layer, text_buffer);
 }
 
-void computeAndDisplaySetter(int complex,TextLayer *layer, char* text_buffer){
+void computeAndDisplaySetter(int complex,TextLayer *layer, char* text_buffer,int threshold){
   //Computing percentage
   double numerator = (double)dataVariable[setNumber][3][complex][0] + (double)dataVariable[setNumber][2][complex][0] + (double)dataVariable[setNumber][1][complex][0];
   double denominator = numerator + (double)dataVariable[setNumber][3][complex][1] + (double)dataVariable[setNumber][2][complex][1] + (double)dataVariable[setNumber][1][complex][1];
@@ -223,7 +227,7 @@ void computeAndDisplaySetter(int complex,TextLayer *layer, char* text_buffer){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 60){
+  if(percentage < threshold){
     text_layer_set_text_color(layer, GColorRed);
   }
   else{
@@ -236,7 +240,7 @@ void computeAndDisplaySetter(int complex,TextLayer *layer, char* text_buffer){
   text_layer_set_text(layer, text_buffer);
 
 }
-void computeAndDisplayR2(int complex,TextLayer *layer, char* text_buffer){
+void computeAndDisplayR2(int complex,TextLayer *layer, char* text_buffer,int threshold){
   //Computing percentage
   double numerator = (double)dataVariable[setNumber][3][complex][0] + (double)dataVariable[setNumber][2][complex][0] + (double)dataVariable[setNumber][1][complex][0];
   double denominator = numerator + (double)dataVariable[setNumber][3][complex][1] + (double)dataVariable[setNumber][2][complex][1] + (double)dataVariable[setNumber][1][complex][1];
@@ -248,7 +252,7 @@ void computeAndDisplayR2(int complex,TextLayer *layer, char* text_buffer){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 60){
+  if(percentage < threshold){
     text_layer_set_text_color(layer, GColorRed);
   }
   else{
@@ -260,7 +264,7 @@ void computeAndDisplayR2(int complex,TextLayer *layer, char* text_buffer){
   strcat(text_buffer,"%");
   text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayR5(int complex,TextLayer *layer, char* text_buffer){
+void computeAndDisplayR5(int complex,TextLayer *layer, char* text_buffer,int threshold){
   //Computing percentage
   double numerator = (double)dataVariable[setNumber][5][complex][0] + (double)dataVariable[setNumber][4][complex][0] + (double)dataVariable[setNumber][2][complex][0];
   double denominator = numerator + (double)dataVariable[setNumber][5][complex][1] + (double)dataVariable[setNumber][4][complex][1] + (double)dataVariable[setNumber][3][complex][1];
@@ -272,7 +276,7 @@ void computeAndDisplayR5(int complex,TextLayer *layer, char* text_buffer){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 60){
+  if(percentage < threshold){
     text_layer_set_text_color(layer, GColorRed);
   }
   else{
@@ -284,7 +288,7 @@ void computeAndDisplayR5(int complex,TextLayer *layer, char* text_buffer){
   strcat(text_buffer,"%");
   text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayopposite(int complex,TextLayer *layer, char* text_buffer){
+void computeAndDisplayopposite(int complex,TextLayer *layer, char* text_buffer,int threshold){
   //Computing percentage
   double numerator = (double)dataVariable[setNumber][0][complex][0] + (double)dataVariable[setNumber][5][complex][0] + (double)dataVariable[setNumber][4][complex][0];
   double denominator = numerator + (double)dataVariable[setNumber][0][complex][1] + (double)dataVariable[setNumber][5][complex][1] + (double)dataVariable[setNumber][4][complex][1];
@@ -296,7 +300,7 @@ void computeAndDisplayopposite(int complex,TextLayer *layer, char* text_buffer){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 60){
+  if(percentage < threshold){
     text_layer_set_text_color(layer, GColorRed);
   }
   else{
@@ -308,7 +312,7 @@ void computeAndDisplayopposite(int complex,TextLayer *layer, char* text_buffer){
   strcat(text_buffer,"%");
   text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayM3(int complex,TextLayer *layer, char* text_buffer){
+void computeAndDisplayM3(int complex,TextLayer *layer, char* text_buffer,int threshold){
   //Computing percentage
   double numerator = (double)dataVariable[setNumber][1][complex][0] + (double)dataVariable[setNumber][0][complex][0] + (double)dataVariable[setNumber][5][complex][0];
   double denominator = numerator + (double)dataVariable[setNumber][1][complex][1] + (double)dataVariable[setNumber][0][complex][1] + (double)dataVariable[setNumber][5][complex][1];
@@ -320,7 +324,7 @@ void computeAndDisplayM3(int complex,TextLayer *layer, char* text_buffer){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 60){
+  if(percentage < threshold){
     text_layer_set_text_color(layer, GColorRed);
   }
   else{
@@ -332,7 +336,7 @@ void computeAndDisplayM3(int complex,TextLayer *layer, char* text_buffer){
   strcat(text_buffer,"%");
   text_layer_set_text(layer, text_buffer);
 }
-void computeAndDisplayM6(int complex,TextLayer *layer, char* text_buffer){
+void computeAndDisplayM6(int complex,TextLayer *layer, char* text_buffer,int threshold){
   //Computing percentage
   double numerator = (double)dataVariable[setNumber][4][complex][0] + (double)dataVariable[setNumber][3][complex][0] + (double)dataVariable[setNumber][2][complex][0];
   double denominator = numerator + (double)dataVariable[setNumber][4][complex][1] + (double)dataVariable[setNumber][3][complex][1] + (double)dataVariable[setNumber][2][complex][1];
@@ -344,7 +348,7 @@ void computeAndDisplayM6(int complex,TextLayer *layer, char* text_buffer){
   else{
     percentage = (numerator / denominator)*100;
   }
-  if(percentage < 60){
+  if(percentage < threshold){
     text_layer_set_text_color(layer, GColorRed);
   }
   else{
@@ -381,20 +385,20 @@ void display_stat_by_complex(){
   computeAndDisplaySetLabel();
 
   //Computing percentages for complex1
-  computeAndDisplayS1(0, s_C1_S1_percentage_layer, s_C1_S1_percentage_text_buffer);
-  computeAndDisplayS6(0, s_C1_S6_percentage_layer, s_C1_S6_percentage_text_buffer);
-  computeAndDisplayS5(0, s_C1_S5_percentage_layer, s_C1_S5_percentage_text_buffer);
-  computeAndDisplayS4(0, s_C1_S4_percentage_layer, s_C1_S4_percentage_text_buffer);
-  computeAndDisplayS3(0, s_C1_S3_percentage_layer, s_C1_S3_percentage_text_buffer);
-  computeAndDisplayS2(0, s_C1_S2_percentage_layer, s_C1_S2_percentage_text_buffer);
+  computeAndDisplayS1(0, s_C1_S1_percentage_layer, s_C1_S1_percentage_text_buffer, 60);
+  computeAndDisplayS6(0, s_C1_S6_percentage_layer, s_C1_S6_percentage_text_buffer, 60);
+  computeAndDisplayS5(0, s_C1_S5_percentage_layer, s_C1_S5_percentage_text_buffer, 60);
+  computeAndDisplayS4(0, s_C1_S4_percentage_layer, s_C1_S4_percentage_text_buffer, 60);
+  computeAndDisplayS3(0, s_C1_S3_percentage_layer, s_C1_S3_percentage_text_buffer, 60);
+  computeAndDisplayS2(0, s_C1_S2_percentage_layer, s_C1_S2_percentage_text_buffer, 60);
 
   //Computing percentages for complex2
-  computeAndDisplayS1(1, s_C2_S1_percentage_layer, s_C2_S1_percentage_text_buffer);
-  computeAndDisplayS6(1, s_C2_S6_percentage_layer, s_C2_S6_percentage_text_buffer);
-  computeAndDisplayS5(1, s_C2_S5_percentage_layer, s_C2_S5_percentage_text_buffer);
-  computeAndDisplayS4(1, s_C2_S4_percentage_layer, s_C2_S4_percentage_text_buffer);
-  computeAndDisplayS3(1, s_C2_S3_percentage_layer, s_C2_S3_percentage_text_buffer);
-  computeAndDisplayS2(1, s_C2_S2_percentage_layer, s_C2_S2_percentage_text_buffer);
+  computeAndDisplayS1(1, s_C2_S1_percentage_layer, s_C2_S1_percentage_text_buffer, 40);
+  computeAndDisplayS6(1, s_C2_S6_percentage_layer, s_C2_S6_percentage_text_buffer, 40);
+  computeAndDisplayS5(1, s_C2_S5_percentage_layer, s_C2_S5_percentage_text_buffer, 40);
+  computeAndDisplayS4(1, s_C2_S4_percentage_layer, s_C2_S4_percentage_text_buffer, 40);
+  computeAndDisplayS3(1, s_C2_S3_percentage_layer, s_C2_S3_percentage_text_buffer, 40);
+  computeAndDisplayS2(1, s_C2_S2_percentage_layer, s_C2_S2_percentage_text_buffer, 40);
 
   display_static_text_complex();
 
@@ -404,19 +408,19 @@ void display_stat_by_player(){
 
   computeAndDisplaySetLabel();
 
-  computeAndDisplaySetter(0, s_C1_S1_percentage_layer, s_C1_S1_percentage_text_buffer);
-  computeAndDisplayR2(0, s_C1_S3_percentage_layer, s_C1_S3_percentage_text_buffer);
-  computeAndDisplayR5(0, s_C1_S2_percentage_layer, s_C1_S2_percentage_text_buffer);
-  computeAndDisplayopposite(0, s_C1_S4_percentage_layer, s_C1_S4_percentage_text_buffer);
-  computeAndDisplayM3(0, s_C1_S6_percentage_layer, s_C1_S6_percentage_text_buffer);
-  computeAndDisplayM6(0, s_C1_S5_percentage_layer, s_C1_S5_percentage_text_buffer);
+  computeAndDisplaySetter(0, s_C1_S1_percentage_layer, s_C1_S1_percentage_text_buffer, 60);
+  computeAndDisplayR2(0, s_C1_S3_percentage_layer, s_C1_S3_percentage_text_buffer, 60);
+  computeAndDisplayR5(0, s_C1_S2_percentage_layer, s_C1_S2_percentage_text_buffer, 60);
+  computeAndDisplayopposite(0, s_C1_S4_percentage_layer, s_C1_S4_percentage_text_buffer, 60);
+  computeAndDisplayM3(0, s_C1_S6_percentage_layer, s_C1_S6_percentage_text_buffer, 60);
+  computeAndDisplayM6(0, s_C1_S5_percentage_layer, s_C1_S5_percentage_text_buffer, 60);
 
-  computeAndDisplaySetter(1, s_C2_S1_percentage_layer, s_C2_S1_percentage_text_buffer);
-  computeAndDisplayR2(1, s_C2_S3_percentage_layer, s_C2_S3_percentage_text_buffer);
-  computeAndDisplayR5(1, s_C2_S2_percentage_layer, s_C2_S2_percentage_text_buffer);
-  computeAndDisplayopposite(1, s_C2_S4_percentage_layer, s_C2_S4_percentage_text_buffer);
-  computeAndDisplayM3(1, s_C2_S6_percentage_layer, s_C2_S6_percentage_text_buffer);
-  computeAndDisplayM6(1, s_C2_S5_percentage_layer, s_C2_S5_percentage_text_buffer);
+  computeAndDisplaySetter(1, s_C2_S1_percentage_layer, s_C2_S1_percentage_text_buffer, 40);
+  computeAndDisplayR2(1, s_C2_S3_percentage_layer, s_C2_S3_percentage_text_buffer, 40);
+  computeAndDisplayR5(1, s_C2_S2_percentage_layer, s_C2_S2_percentage_text_buffer, 40);
+  computeAndDisplayopposite(1, s_C2_S4_percentage_layer, s_C2_S4_percentage_text_buffer, 40);
+  computeAndDisplayM3(1, s_C2_S6_percentage_layer, s_C2_S6_percentage_text_buffer, 40);
+  computeAndDisplayM6(1, s_C2_S5_percentage_layer, s_C2_S5_percentage_text_buffer, 40);
 
   display_static_text_player();
 }

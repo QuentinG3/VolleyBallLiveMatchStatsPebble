@@ -1,3 +1,7 @@
+/*
+Author : Quentin Gusbin
+Date : 10/09/2016
+*/
 #include <pebble.h>
 #include "gameWindow.h"
 #include "data.h"
