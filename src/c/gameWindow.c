@@ -258,6 +258,18 @@ static void game_window_click_config_provider(void *context) {
   
 }
 
+static void init_label(TextLayer *s_layer, GColor background_color, GColor text_color, GTextAlignment text_alignment, const char * font_key, const char* text, Layer *window_layer){
+
+  text_layer_set_background_color(s_layer, background_color);
+  text_layer_set_text_alignment(s_layer, text_alignment);
+  text_layer_set_font(s_layer,fonts_get_system_font(font_key));
+  text_layer_set_text_color(s_layer, text_color);
+  if(text != NULL){
+     text_layer_set_text(s_layer, text);
+  }
+  layer_add_child(window_layer, text_layer_get_layer(s_layer));
+}
+
 static void game_window_load(Window *window) {
   
   home_score_text_buffer = malloc(sizeof(char) * 30);
@@ -270,140 +282,53 @@ static void game_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
   
-  //Creating the Setter text Layer 
-  s_setter_layer = text_layer_create(
-  GRect(0, 0 , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_setter_layer, GColorClear);
-  text_layer_set_text_color(s_setter_layer, GColorBlack);
-  computeAndDisplaySetterPosition();
-  text_layer_set_text_alignment(s_setter_layer, GTextAlignmentCenter);
-  text_layer_set_font(s_setter_layer,fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_setter_layer));
+  //Creating the Setter text Layer
+  s_setter_layer = text_layer_create(GRect(0, 0 , bounds.size.w, bounds.size.h));
+  init_label(s_setter_layer, GColorClear, GColorBlack, GTextAlignmentCenter, FONT_KEY_GOTHIC_18_BOLD, NULL, window_layer);
   
   //Creating the C1 text Layer 
-  s_C1_layer = text_layer_create(
-  GRect(PBL_IF_ROUND_ELSE((bounds.size.w/10),0), 2*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C1_layer, GColorClear);
-  text_layer_set_text_color(s_C1_layer, GColorBlack);
-  text_layer_set_text(s_C1_layer,  complexNames[0]);
-  text_layer_set_text_alignment(s_C1_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C1_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C1_layer));
+  s_C1_layer = text_layer_create(GRect(PBL_IF_ROUND_ELSE((bounds.size.w/10),0), 2*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C1_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, complexNames[0], window_layer);
   
   //Creating the C2 text Layer 
-  s_C2_layer = text_layer_create(
-  GRect(5*(bounds.size.w/10), 2*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  s_C2_layer = text_layer_create(GRect(5*(bounds.size.w/10), 2*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C2_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, complexNames[1], window_layer);
   
-  text_layer_set_background_color(s_C2_layer, GColorClear);
-  text_layer_set_text_color(s_C2_layer, GColorBlack);
-  text_layer_set_text(s_C2_layer, complexNames[1]);
-  text_layer_set_text_alignment(s_C2_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C2_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C2_layer));
   
  //Creating the C1 percentage text Layer 
-
-  s_C1_percentage_layer = text_layer_create(
-  GRect(PBL_IF_ROUND_ELSE(3*(bounds.size.w/10),2*(bounds.size.w/10)), 2*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C1_percentage_layer, GColorClear);
-  computeAndDisplayC1Percentage();
-  text_layer_set_text_alignment(s_C1_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C1_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C1_percentage_layer));
+  s_C1_percentage_layer = text_layer_create(GRect(PBL_IF_ROUND_ELSE(3*(bounds.size.w/10),2*(bounds.size.w/10)), 2*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C1_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
   
   //Creating the C2 percentage text Layer 
-  s_C2_percentage_layer = text_layer_create(
-  GRect(7*(bounds.size.w/10), 2*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C2_percentage_layer, GColorClear);
-  computeAndDisplayC2Percentage();
-  text_layer_set_text_alignment(s_C2_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C2_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C2_percentage_layer));
-  
-  
-    
+  s_C2_percentage_layer = text_layer_create(GRect(7*(bounds.size.w/10), 2*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C2_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
+     
   //Creating the C1 and C2 text Layer 
-  s_C1_C2_layer = text_layer_create(
-  GRect((bounds.size.w/10), 4*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_C1_C2_layer, GColorClear);
-  text_layer_set_text_color(s_C1_C2_layer, GColorBlack);
-  text_layer_set_text(s_C1_C2_layer, "C1 + C2");
-  text_layer_set_text_alignment(s_C1_C2_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C1_C2_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C1_C2_layer));
+  s_C1_C2_layer = text_layer_create(GRect((bounds.size.w/10), 4*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C1_C2_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, "C1 + C2", window_layer);
   
   //Creating the C1 and C2 percentage text Layer 
-  s_C1_C2_percentage_layer = text_layer_create(
-  GRect(6*(bounds.size.w/10), 4*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  s_C1_C2_percentage_layer = text_layer_create(GRect(6*(bounds.size.w/10), 4*(bounds.size.h/10) , bounds.size.w, bounds.size.h));
+  init_label(s_C1_C2_percentage_layer, GColorClear, GColorBlack, GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, NULL, window_layer);
   
-  text_layer_set_background_color(s_C1_C2_percentage_layer, GColorClear);
-  computeAndDisplayC1AndC2Percentage();
-  text_layer_set_text_alignment(s_C1_C2_percentage_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_C1_C2_percentage_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_C1_C2_percentage_layer));
-  
-
   //Creating the serve indication left text Layer 
-  s_service_indication_left_layer = text_layer_create(
-  GRect(PBL_IF_ROUND_ELSE(bounds.size.w/10,0), PBL_IF_ROUND_ELSE(5*(bounds.size.h/10),6*(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_service_indication_left_layer, GColorClear);
-  text_layer_set_text_color(s_service_indication_left_layer, PBL_IF_BW_ELSE(GColorBlack, GColorGreen));
-  text_layer_set_text(s_service_indication_left_layer, "[--Serve--]");
-  text_layer_set_text_alignment(s_service_indication_left_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_service_indication_left_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_service_indication_left_layer));
+  s_service_indication_left_layer = text_layer_create(GRect(PBL_IF_ROUND_ELSE(bounds.size.w/10,0), PBL_IF_ROUND_ELSE(5*(bounds.size.h/10),6*(bounds.size.h/10)) , bounds.size.w, bounds.size.h));
+  init_label(s_service_indication_left_layer, GColorClear, PBL_IF_BW_ELSE(GColorBlack, GColorGreen), GTextAlignmentLeft, FONT_KEY_GOTHIC_14_BOLD, "[--Serve--]", window_layer);
 
   //Creating the serve indication right text Layer 
-  s_service_indication_right_layer = text_layer_create(
-  GRect(0, PBL_IF_ROUND_ELSE(5*(bounds.size.h/10),6*(bounds.size.h/10)) , PBL_IF_ROUND_ELSE(9*(bounds.size.w/10),bounds.size.w), bounds.size.h));
-  text_layer_set_background_color(s_service_indication_right_layer, GColorClear);
-  text_layer_set_text_color(s_service_indication_right_layer, GColorRed);
-  text_layer_set_text(s_service_indication_right_layer, "[--Serve--]");
-  text_layer_set_text_alignment(s_service_indication_right_layer, GTextAlignmentRight);
-  text_layer_set_font(s_service_indication_right_layer,fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD));
-
-  layer_add_child(window_layer, text_layer_get_layer(s_service_indication_right_layer));
-
-  computeAndDisplayServe();
+  s_service_indication_right_layer = text_layer_create(GRect(0, PBL_IF_ROUND_ELSE(5*(bounds.size.h/10),6*(bounds.size.h/10)) , PBL_IF_ROUND_ELSE(9*(bounds.size.w/10),bounds.size.w), bounds.size.h));
+  init_label(s_service_indication_right_layer, GColorClear, GColorRed, GTextAlignmentRight, FONT_KEY_GOTHIC_14_BOLD, "[--Serve--]", window_layer);
+  
   //Creating score home text Layer 
-  s_home_team_score_layer = text_layer_create(
-  GRect(PBL_IF_ROUND_ELSE(2*(bounds.size.w/10),(bounds.size.w/10)),PBL_IF_ROUND_ELSE(6*(bounds.size.h/10),7*(bounds.size.h/10)), bounds.size.w, bounds.size.h));
-  
-  text_layer_set_background_color(s_home_team_score_layer, GColorClear);
-  text_layer_set_text_color(s_home_team_score_layer, PBL_IF_BW_ELSE(GColorBlack, GColorGreen));
-  computeAndDisplayHomeScore();
-  text_layer_set_text_alignment(s_home_team_score_layer, GTextAlignmentLeft);
-  text_layer_set_font(s_home_team_score_layer,fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_home_team_score_layer));
+  s_home_team_score_layer = text_layer_create(GRect(PBL_IF_ROUND_ELSE(2*(bounds.size.w/10),(bounds.size.w/10)),PBL_IF_ROUND_ELSE(6*(bounds.size.h/10),7*(bounds.size.h/10)), bounds.size.w, bounds.size.h));
+  init_label(s_home_team_score_layer, GColorClear, PBL_IF_BW_ELSE(GColorBlack, GColorGreen), GTextAlignmentLeft, FONT_KEY_BITHAM_42_BOLD, NULL, window_layer);
 
   //Creating the score away text Layer 
-  s_away_team_score_layer = text_layer_create(
-  GRect(0, PBL_IF_ROUND_ELSE(6*(bounds.size.h/10),7*(bounds.size.h/10)) , PBL_IF_ROUND_ELSE(8*(bounds.size.w/10),9*(bounds.size.w/10)), bounds.size.h));
-  
-  text_layer_set_background_color(s_away_team_score_layer, GColorClear);
-  text_layer_set_text_color(s_away_team_score_layer, GColorRed);
-  computeAndDisplayAwayScore();
-  text_layer_set_text_alignment(s_away_team_score_layer, GTextAlignmentRight);
-  text_layer_set_font(s_away_team_score_layer,fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
-  
-  layer_add_child(window_layer, text_layer_get_layer(s_away_team_score_layer));
+  s_away_team_score_layer = text_layer_create(GRect(0, PBL_IF_ROUND_ELSE(6*(bounds.size.h/10),7*(bounds.size.h/10)) , PBL_IF_ROUND_ELSE(8*(bounds.size.w/10),9*(bounds.size.w/10)), bounds.size.h));
+  init_label(s_away_team_score_layer, GColorClear, GColorRed, GTextAlignmentRight, FONT_KEY_BITHAM_42_BOLD, NULL, window_layer);
   
   
+  updateUI();
   
 }
 

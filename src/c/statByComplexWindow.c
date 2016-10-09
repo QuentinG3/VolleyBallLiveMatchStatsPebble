@@ -483,7 +483,7 @@ static void stat_by_complex_window_click_config_provider(void *context) {
     window_single_click_subscribe(idUp, stat_by_complex_short_up_click_handler);
     window_single_click_subscribe(idDown,stat_by_complex_short_down_click_handler);
 }
-void init_label(TextLayer *s_layer, GColor background_color, GColor text_color, GTextAlignment text_alignment, const char * font_key, const char* text, Layer *window_layer){
+static void init_label(TextLayer *s_layer, GColor background_color, GColor text_color, GTextAlignment text_alignment, const char * font_key, const char* text, Layer *window_layer){
 
   text_layer_set_background_color(s_layer, background_color);
   text_layer_set_text_alignment(s_layer, text_alignment);
@@ -494,6 +494,7 @@ void init_label(TextLayer *s_layer, GColor background_color, GColor text_color, 
   }
   layer_add_child(window_layer, text_layer_get_layer(s_layer));
 }
+
 static void stat_by_complex_window_load(Window *window) {
 
   //Mallocing buffers
